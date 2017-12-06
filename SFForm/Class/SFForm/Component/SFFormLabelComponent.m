@@ -7,7 +7,7 @@
 //
 
 #import "SFFormLabelComponent.h"
-#import <YYCategories/NSString+YYAdd.h>
+#import "YYCategories/NSString+YYAdd.h"
 
 @implementation SFFormLabelComponent
 

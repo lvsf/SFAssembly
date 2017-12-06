@@ -7,7 +7,7 @@
 //
 
 #import "SFFormImageViewComponent.h"
-#import <UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 
 @implementation SFFormImageViewComponent
 

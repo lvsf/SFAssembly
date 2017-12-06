@@ -7,7 +7,7 @@
 //
 
 #import "SFFormYYLabelComponent.h"
-#import <YYText.h>
+#import "YYText.h"
 
 @interface SFFormYYLabelComponent()
 @property (nonatomic,strong) NSMutableAttributedString *praviteAttributedText;

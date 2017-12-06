@@ -8,7 +8,7 @@
 
 #import "SFFormControlComponent.h"
 #import "NSObject+SFAddForm.h"
-#import <YYCategories/UIControl+YYAdd.h>
+#import "YYCategories/UIControl+YYAdd.h"
 
 @implementation SFFormControlComponent
 

@@ -8,8 +8,8 @@
 
 #import "UITableView+SFAdd.h"
 #import <objc/runtime.h>
-#import <Masonry.h>
-#import <YYCategories/NSObject+YYAdd.h>
+#import "Masonry.h"
+#import "YYCategories/NSObject+YYAdd.h"
 
 @interface UIApplication(SFAddRegistBlock)
 @property (nonatomic,copy) NSString*(^cellReuseIdentifierBlock)(NSString *className);
