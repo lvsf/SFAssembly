@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
     s.authors      = {'lvsf' => 'lvsf1992@163.com'}
     s.platform     = :ios, '7.0'
     s.source       = {:git => 'https://github.com/lvsf/SFForm.git', :tag => s.version}
-    s.source_files = 'SFForm/Class/*.{h,m}'
+    s.source_files = 'SFForm/Class/**/*'
     s.requires_arc = true
     s.dependency 'SDWebImage'
     s.dependency 'Masonry'
