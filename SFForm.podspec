@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = 'SFForm'
-    s.version      = '0.0.1'
+    s.version      = '0.0.2'
     s.summary      = '简易的表单界面构建'
     s.homepage     = 'https://github.com/lvsf/SFForm'
     s.license      = 'MIT'
