@@ -1,0 +1,861 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1725745121F5C22900765281 /* SFMessageAssemblyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725745021F5C22900765281 /* SFMessageAssemblyLayout.m */; };
+		1746A0E422526B69004B6431 /* SFFormAssemblyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1746A0E322526B69004B6431 /* SFFormAssemblyTableViewCell.m */; };
+		1748C57A2252F27200982A99 /* SFFormAssemblyTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1748C5792252F27200982A99 /* SFFormAssemblyTableItem.m */; };
+		1757A8F321F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1757A8F221F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.m */; };
+		176476C72251F3240023EC03 /* SFAssemblyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476AE2251F3240023EC03 /* SFAssemblyView.m */; };
+		176476C82251F3240023EC03 /* SFAssemblyLayoutContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476B62251F3240023EC03 /* SFAssemblyLayoutContainer.m */; };
+		176476C92251F3240023EC03 /* SFAssemblyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476B72251F3240023EC03 /* SFAssemblyLayout.m */; };
+		176476CA2251F3240023EC03 /* SFAssemblyPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476B92251F3240023EC03 /* SFAssemblyPlace.m */; };
+		176476CB2251F3240023EC03 /* SFButtonComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476BB2251F3240023EC03 /* SFButtonComponent.m */; };
+		176476CC2251F3240023EC03 /* SFViewComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476BC2251F3240023EC03 /* SFViewComponent.m */; };
+		176476CD2251F3240023EC03 /* SFLabelComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476BE2251F3240023EC03 /* SFLabelComponent.m */; };
+		176476CE2251F3240023EC03 /* SFImageViewComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476C12251F3240023EC03 /* SFImageViewComponent.m */; };
+		176476CF2251F3240023EC03 /* SFControlComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476C22251F3240023EC03 /* SFControlComponent.m */; };
+		176476D02251F3240023EC03 /* UIView+SFAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476C42251F3240023EC03 /* UIView+SFAssembly.m */; };
+		176476D42251F6350023EC03 /* UITableView+SFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476D32251F6350023EC03 /* UITableView+SFForm.m */; };
+		176476D72251F6470023EC03 /* UICollectionView+SFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476D62251F6470023EC03 /* UICollectionView+SFForm.m */; };
+		176476DA2251F6980023EC03 /* SFFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476D92251F6980023EC03 /* SFFormManager.m */; };
+		176476DD2251F6C90023EC03 /* SFFormTableViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476DC2251F6C90023EC03 /* SFFormTableViewManager.m */; };
+		176476E02251F95B0023EC03 /* SFMultipleProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476DE2251F95B0023EC03 /* SFMultipleProxy.m */; };
+		176476E3225201070023EC03 /* SFFormItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476E2225201070023EC03 /* SFFormItem.m */; };
+		176476E6225201780023EC03 /* SFFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476E5225201780023EC03 /* SFFormSection.m */; };
+		176476EC225201E50023EC03 /* SFFormSectionHeaderFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476EB225201E40023EC03 /* SFFormSectionHeaderFooter.m */; };
+		176476F1225206A70023EC03 /* SFFormTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476EE225206A60023EC03 /* SFFormTableItem.m */; };
+		176476F2225206A70023EC03 /* SFFormTableSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476EF225206A60023EC03 /* SFFormTableSection.m */; };
+		176476F5225208A80023EC03 /* SFFormConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476F4225208A80023EC03 /* SFFormConfiguration.m */; };
+		176476FE225213C30023EC03 /* UITableViewHeaderFooterView+SFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476F6225213BD0023EC03 /* UITableViewHeaderFooterView+SFForm.m */; };
+		176476FF225213C30023EC03 /* UITableViewCell+SFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476F8225213BE0023EC03 /* UITableViewCell+SFForm.m */; };
+		17647700225213C30023EC03 /* SFFormTableSectionHeaderFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476F9225213BE0023EC03 /* SFFormTableSectionHeaderFooter.m */; };
+		17647701225213C30023EC03 /* SFFormTableHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476FC225213C00023EC03 /* SFFormTableHeaderFooterView.m */; };
+		1764770422521B660023EC03 /* SFFormSectionHeaderFooterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1764770322521B660023EC03 /* SFFormSectionHeaderFooterLayout.m */; };
+		17705E3C22530440000C5E1E /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E342253043E000C5E1E /* UITableView+FDIndexPathHeightCache.m */; };
+		17705E3D22530440000C5E1E /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E362253043F000C5E1E /* UITableView+FDKeyedHeightCache.m */; };
+		17705E3E22530440000C5E1E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E382253043F000C5E1E /* UITableView+FDTemplateLayoutCellDebug.m */; };
+		17705E3F22530440000C5E1E /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E3B22530440000C5E1E /* UITableView+FDTemplateLayoutCell.m */; };
+		17705E4222530BD6000C5E1E /* NSString+HHAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E4022530BD5000C5E1E /* NSString+HHAdd.m */; };
+		17705E48225332E2000C5E1E /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E44225332E2000C5E1E /* YYWeakProxy.m */; };
+		17705E49225332E2000C5E1E /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E46225332E2000C5E1E /* YYFPSLabel.m */; };
+		17705E4C22534F1F000C5E1E /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E4B22534F1F000C5E1E /* TableViewCell.m */; };
+		17705E502253520B000C5E1E /* SFYYLabelComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E4F2253520B000C5E1E /* SFYYLabelComponent.m */; };
+		17705E53225353BB000C5E1E /* SFExternalAssemblyPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 17705E52225353BB000C5E1E /* SFExternalAssemblyPlace.m */; };
+		17B325C321F563640009FE48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B325C221F563640009FE48 /* AppDelegate.m */; };
+		17B325C621F563640009FE48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B325C521F563640009FE48 /* ViewController.m */; };
+		17B325C921F563640009FE48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B325C721F563640009FE48 /* Main.storyboard */; };
+		17B325CB21F563660009FE48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17B325CA21F563660009FE48 /* Assets.xcassets */; };
+		17B325CE21F563660009FE48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17B325CC21F563660009FE48 /* LaunchScreen.storyboard */; };
+		17B325D121F563660009FE48 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B325D021F563660009FE48 /* main.m */; };
+		17B325DB21F563660009FE48 /* SFAssemblyUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B325DA21F563660009FE48 /* SFAssemblyUITests.m */; };
+		66858E9660026ADC487FB707 /* libPods-SFAssembly.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C51FAB4CF0AC8C24F6F89BA6 /* libPods-SFAssembly.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		17B325D721F563660009FE48 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17B325B621F563630009FE48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17B325BD21F563640009FE48;
+			remoteInfo = SFAssembly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1725744F21F5C22900765281 /* SFMessageAssemblyLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFMessageAssemblyLayout.h; sourceTree = "<group>"; };
+		1725745021F5C22900765281 /* SFMessageAssemblyLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFMessageAssemblyLayout.m; sourceTree = "<group>"; };
+		1746A0E222526B69004B6431 /* SFFormAssemblyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormAssemblyTableViewCell.h; sourceTree = "<group>"; };
+		1746A0E322526B69004B6431 /* SFFormAssemblyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormAssemblyTableViewCell.m; sourceTree = "<group>"; };
+		1748C5782252F27200982A99 /* SFFormAssemblyTableItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormAssemblyTableItem.h; sourceTree = "<group>"; };
+		1748C5792252F27200982A99 /* SFFormAssemblyTableItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormAssemblyTableItem.m; sourceTree = "<group>"; };
+		1757A8F121F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFMessageAssemblyLayoutDataSource.h; sourceTree = "<group>"; };
+		1757A8F221F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFMessageAssemblyLayoutDataSource.m; sourceTree = "<group>"; };
+		176476AD2251F3240023EC03 /* UIView+SFAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SFAssembly.h"; sourceTree = "<group>"; };
+		176476AE2251F3240023EC03 /* SFAssemblyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyView.m; sourceTree = "<group>"; };
+		176476B22251F3240023EC03 /* SFLabelComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLabelComponent.h; sourceTree = "<group>"; };
+		176476B32251F3240023EC03 /* SFImageViewComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageViewComponent.h; sourceTree = "<group>"; };
+		176476B52251F3240023EC03 /* SFAssemblyPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyPlace.h; sourceTree = "<group>"; };
+		176476B62251F3240023EC03 /* SFAssemblyLayoutContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyLayoutContainer.m; sourceTree = "<group>"; };
+		176476B72251F3240023EC03 /* SFAssemblyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyLayout.m; sourceTree = "<group>"; };
+		176476B82251F3240023EC03 /* SFAssemblyLayoutContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyLayoutContainer.h; sourceTree = "<group>"; };
+		176476B92251F3240023EC03 /* SFAssemblyPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyPlace.m; sourceTree = "<group>"; };
+		176476BA2251F3240023EC03 /* SFAssemblyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyLayout.h; sourceTree = "<group>"; };
+		176476BB2251F3240023EC03 /* SFButtonComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFButtonComponent.m; sourceTree = "<group>"; };
+		176476BC2251F3240023EC03 /* SFViewComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFViewComponent.m; sourceTree = "<group>"; };
+		176476BD2251F3240023EC03 /* SFControlComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFControlComponent.h; sourceTree = "<group>"; };
+		176476BE2251F3240023EC03 /* SFLabelComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFLabelComponent.m; sourceTree = "<group>"; };
+		176476BF2251F3240023EC03 /* SFViewComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFViewComponent.h; sourceTree = "<group>"; };
+		176476C02251F3240023EC03 /* SFButtonComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFButtonComponent.h; sourceTree = "<group>"; };
+		176476C12251F3240023EC03 /* SFImageViewComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageViewComponent.m; sourceTree = "<group>"; };
+		176476C22251F3240023EC03 /* SFControlComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFControlComponent.m; sourceTree = "<group>"; };
+		176476C32251F3240023EC03 /* SFAssemblyComponentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyComponentProtocol.h; sourceTree = "<group>"; };
+		176476C42251F3240023EC03 /* UIView+SFAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SFAssembly.m"; sourceTree = "<group>"; };
+		176476C52251F3240023EC03 /* SFAssemblyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyView.h; sourceTree = "<group>"; };
+		176476D22251F6350023EC03 /* UITableView+SFForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+SFForm.h"; sourceTree = "<group>"; };
+		176476D32251F6350023EC03 /* UITableView+SFForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SFForm.m"; sourceTree = "<group>"; };
+		176476D52251F6470023EC03 /* UICollectionView+SFForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+SFForm.h"; sourceTree = "<group>"; };
+		176476D62251F6470023EC03 /* UICollectionView+SFForm.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+SFForm.m"; sourceTree = "<group>"; };
+		176476D82251F6980023EC03 /* SFFormManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormManager.h; sourceTree = "<group>"; };
+		176476D92251F6980023EC03 /* SFFormManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormManager.m; sourceTree = "<group>"; };
+		176476DB2251F6C90023EC03 /* SFFormTableViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormTableViewManager.h; sourceTree = "<group>"; };
+		176476DC2251F6C90023EC03 /* SFFormTableViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormTableViewManager.m; sourceTree = "<group>"; };
+		176476DE2251F95B0023EC03 /* SFMultipleProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMultipleProxy.m; sourceTree = "<group>"; };
+		176476DF2251F95B0023EC03 /* SFMultipleProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMultipleProxy.h; sourceTree = "<group>"; };
+		176476E1225201070023EC03 /* SFFormItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormItem.h; sourceTree = "<group>"; };
+		176476E2225201070023EC03 /* SFFormItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormItem.m; sourceTree = "<group>"; };
+		176476E4225201780023EC03 /* SFFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormSection.h; sourceTree = "<group>"; };
+		176476E5225201780023EC03 /* SFFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormSection.m; sourceTree = "<group>"; };
+		176476EA225201E40023EC03 /* SFFormSectionHeaderFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormSectionHeaderFooter.h; sourceTree = "<group>"; };
+		176476EB225201E40023EC03 /* SFFormSectionHeaderFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormSectionHeaderFooter.m; sourceTree = "<group>"; };
+		176476ED225206A50023EC03 /* SFFormTableSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormTableSection.h; sourceTree = "<group>"; };
+		176476EE225206A60023EC03 /* SFFormTableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormTableItem.m; sourceTree = "<group>"; };
+		176476EF225206A60023EC03 /* SFFormTableSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormTableSection.m; sourceTree = "<group>"; };
+		176476F0225206A70023EC03 /* SFFormTableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormTableItem.h; sourceTree = "<group>"; };
+		176476F3225208A80023EC03 /* SFFormConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormConfiguration.h; sourceTree = "<group>"; };
+		176476F4225208A80023EC03 /* SFFormConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormConfiguration.m; sourceTree = "<group>"; };
+		176476F6225213BD0023EC03 /* UITableViewHeaderFooterView+SFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewHeaderFooterView+SFForm.m"; sourceTree = "<group>"; };
+		176476F7225213BE0023EC03 /* SFFormTableSectionHeaderFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormTableSectionHeaderFooter.h; sourceTree = "<group>"; };
+		176476F8225213BE0023EC03 /* UITableViewCell+SFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+SFForm.m"; sourceTree = "<group>"; };
+		176476F9225213BE0023EC03 /* SFFormTableSectionHeaderFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormTableSectionHeaderFooter.m; sourceTree = "<group>"; };
+		176476FA225213BF0023EC03 /* SFFormTableHeaderFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormTableHeaderFooterView.h; sourceTree = "<group>"; };
+		176476FB225213BF0023EC03 /* UITableViewCell+SFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+SFForm.h"; sourceTree = "<group>"; };
+		176476FC225213C00023EC03 /* SFFormTableHeaderFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormTableHeaderFooterView.m; sourceTree = "<group>"; };
+		176476FD225213C00023EC03 /* UITableViewHeaderFooterView+SFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewHeaderFooterView+SFForm.h"; sourceTree = "<group>"; };
+		1764770222521B660023EC03 /* SFFormSectionHeaderFooterLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormSectionHeaderFooterLayout.h; sourceTree = "<group>"; };
+		1764770322521B660023EC03 /* SFFormSectionHeaderFooterLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormSectionHeaderFooterLayout.m; sourceTree = "<group>"; };
+		17705E342253043E000C5E1E /* UITableView+FDIndexPathHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDIndexPathHeightCache.m"; sourceTree = "<group>"; };
+		17705E352253043E000C5E1E /* UITableView+FDIndexPathHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDIndexPathHeightCache.h"; sourceTree = "<group>"; };
+		17705E362253043F000C5E1E /* UITableView+FDKeyedHeightCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDKeyedHeightCache.m"; sourceTree = "<group>"; };
+		17705E372253043F000C5E1E /* UITableView+FDTemplateLayoutCellDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCellDebug.h"; sourceTree = "<group>"; };
+		17705E382253043F000C5E1E /* UITableView+FDTemplateLayoutCellDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCellDebug.m"; sourceTree = "<group>"; };
+		17705E3922530440000C5E1E /* UITableView+FDTemplateLayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDTemplateLayoutCell.h"; sourceTree = "<group>"; };
+		17705E3A22530440000C5E1E /* UITableView+FDKeyedHeightCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FDKeyedHeightCache.h"; sourceTree = "<group>"; };
+		17705E3B22530440000C5E1E /* UITableView+FDTemplateLayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FDTemplateLayoutCell.m"; sourceTree = "<group>"; };
+		17705E4022530BD5000C5E1E /* NSString+HHAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HHAdd.m"; sourceTree = "<group>"; };
+		17705E4122530BD6000C5E1E /* NSString+HHAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HHAdd.h"; sourceTree = "<group>"; };
+		17705E44225332E2000C5E1E /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		17705E45225332E2000C5E1E /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		17705E46225332E2000C5E1E /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		17705E47225332E2000C5E1E /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		17705E4A22534F1F000C5E1E /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		17705E4B22534F1F000C5E1E /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		17705E4E2253520B000C5E1E /* SFYYLabelComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFYYLabelComponent.h; sourceTree = "<group>"; };
+		17705E4F2253520B000C5E1E /* SFYYLabelComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFYYLabelComponent.m; sourceTree = "<group>"; };
+		17705E51225353BB000C5E1E /* SFExternalAssemblyPlace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFExternalAssemblyPlace.h; sourceTree = "<group>"; };
+		17705E52225353BB000C5E1E /* SFExternalAssemblyPlace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFExternalAssemblyPlace.m; sourceTree = "<group>"; };
+		17B325BE21F563640009FE48 /* SFAssembly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFAssembly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B325C121F563640009FE48 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		17B325C221F563640009FE48 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		17B325C421F563640009FE48 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		17B325C521F563640009FE48 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		17B325C821F563640009FE48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		17B325CA21F563660009FE48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17B325CD21F563660009FE48 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		17B325CF21F563660009FE48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17B325D021F563660009FE48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		17B325D621F563660009FE48 /* SFAssemblyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SFAssemblyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17B325DA21F563660009FE48 /* SFAssemblyUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyUITests.m; sourceTree = "<group>"; };
+		17B325DC21F563660009FE48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACDF7F6FE1F0E3D36D290E50 /* Pods-SFAssembly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFAssembly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SFAssembly/Pods-SFAssembly.debug.xcconfig"; sourceTree = "<group>"; };
+		B8C147D7993D848B35B83687 /* Pods-SFAssembly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SFAssembly.release.xcconfig"; path = "Pods/Target Support Files/Pods-SFAssembly/Pods-SFAssembly.release.xcconfig"; sourceTree = "<group>"; };
+		C51FAB4CF0AC8C24F6F89BA6 /* libPods-SFAssembly.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SFAssembly.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		17B325BB21F563640009FE48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66858E9660026ADC487FB707 /* libPods-SFAssembly.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B325D321F563660009FE48 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1757A8F421F86C25007A46FF /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1725744F21F5C22900765281 /* SFMessageAssemblyLayout.h */,
+				1725745021F5C22900765281 /* SFMessageAssemblyLayout.m */,
+				1757A8F121F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.h */,
+				1757A8F221F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		176476AC2251F3240023EC03 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				176476B42251F3240023EC03 /* Layout */,
+				176476B12251F3240023EC03 /* Components */,
+				176476C52251F3240023EC03 /* SFAssemblyView.h */,
+				176476AE2251F3240023EC03 /* SFAssemblyView.m */,
+				176476AD2251F3240023EC03 /* UIView+SFAssembly.h */,
+				176476C42251F3240023EC03 /* UIView+SFAssembly.m */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		176476B12251F3240023EC03 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				176476C32251F3240023EC03 /* SFAssemblyComponentProtocol.h */,
+				176476C02251F3240023EC03 /* SFButtonComponent.h */,
+				176476BB2251F3240023EC03 /* SFButtonComponent.m */,
+				176476BD2251F3240023EC03 /* SFControlComponent.h */,
+				176476C22251F3240023EC03 /* SFControlComponent.m */,
+				176476B32251F3240023EC03 /* SFImageViewComponent.h */,
+				176476C12251F3240023EC03 /* SFImageViewComponent.m */,
+				176476B22251F3240023EC03 /* SFLabelComponent.h */,
+				176476BE2251F3240023EC03 /* SFLabelComponent.m */,
+				176476BF2251F3240023EC03 /* SFViewComponent.h */,
+				176476BC2251F3240023EC03 /* SFViewComponent.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		176476B42251F3240023EC03 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				176476BA2251F3240023EC03 /* SFAssemblyLayout.h */,
+				176476B72251F3240023EC03 /* SFAssemblyLayout.m */,
+				176476B82251F3240023EC03 /* SFAssemblyLayoutContainer.h */,
+				176476B62251F3240023EC03 /* SFAssemblyLayoutContainer.m */,
+				176476B52251F3240023EC03 /* SFAssemblyPlace.h */,
+				176476B92251F3240023EC03 /* SFAssemblyPlace.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		176476D12251F3DE0023EC03 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				176476E72252017B0023EC03 /* Form */,
+				176476E8225201890023EC03 /* TableView */,
+				176476E92252019D0023EC03 /* CollectionView */,
+				176476DF2251F95B0023EC03 /* SFMultipleProxy.h */,
+				176476DE2251F95B0023EC03 /* SFMultipleProxy.m */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		176476E72252017B0023EC03 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				176476E1225201070023EC03 /* SFFormItem.h */,
+				176476E2225201070023EC03 /* SFFormItem.m */,
+				176476E4225201780023EC03 /* SFFormSection.h */,
+				176476E5225201780023EC03 /* SFFormSection.m */,
+				176476EA225201E40023EC03 /* SFFormSectionHeaderFooter.h */,
+				176476EB225201E40023EC03 /* SFFormSectionHeaderFooter.m */,
+				176476D82251F6980023EC03 /* SFFormManager.h */,
+				176476D92251F6980023EC03 /* SFFormManager.m */,
+				176476F3225208A80023EC03 /* SFFormConfiguration.h */,
+				176476F4225208A80023EC03 /* SFFormConfiguration.m */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		176476E8225201890023EC03 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				17705E3322530432000C5E1E /* FDTemplateLayoutCell */,
+				176476F0225206A70023EC03 /* SFFormTableItem.h */,
+				176476EE225206A60023EC03 /* SFFormTableItem.m */,
+				176476ED225206A50023EC03 /* SFFormTableSection.h */,
+				176476EF225206A60023EC03 /* SFFormTableSection.m */,
+				176476DB2251F6C90023EC03 /* SFFormTableViewManager.h */,
+				176476DC2251F6C90023EC03 /* SFFormTableViewManager.m */,
+				176476FA225213BF0023EC03 /* SFFormTableHeaderFooterView.h */,
+				176476FC225213C00023EC03 /* SFFormTableHeaderFooterView.m */,
+				176476F7225213BE0023EC03 /* SFFormTableSectionHeaderFooter.h */,
+				176476F9225213BE0023EC03 /* SFFormTableSectionHeaderFooter.m */,
+				1764770222521B660023EC03 /* SFFormSectionHeaderFooterLayout.h */,
+				1764770322521B660023EC03 /* SFFormSectionHeaderFooterLayout.m */,
+				1746A0E222526B69004B6431 /* SFFormAssemblyTableViewCell.h */,
+				1746A0E322526B69004B6431 /* SFFormAssemblyTableViewCell.m */,
+				1748C5782252F27200982A99 /* SFFormAssemblyTableItem.h */,
+				1748C5792252F27200982A99 /* SFFormAssemblyTableItem.m */,
+				176476D22251F6350023EC03 /* UITableView+SFForm.h */,
+				176476D32251F6350023EC03 /* UITableView+SFForm.m */,
+				176476FB225213BF0023EC03 /* UITableViewCell+SFForm.h */,
+				176476F8225213BE0023EC03 /* UITableViewCell+SFForm.m */,
+				176476FD225213C00023EC03 /* UITableViewHeaderFooterView+SFForm.h */,
+				176476F6225213BD0023EC03 /* UITableViewHeaderFooterView+SFForm.m */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		176476E92252019D0023EC03 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				176476D52251F6470023EC03 /* UICollectionView+SFForm.h */,
+				176476D62251F6470023EC03 /* UICollectionView+SFForm.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		17705E3322530432000C5E1E /* FDTemplateLayoutCell */ = {
+			isa = PBXGroup;
+			children = (
+				17705E352253043E000C5E1E /* UITableView+FDIndexPathHeightCache.h */,
+				17705E342253043E000C5E1E /* UITableView+FDIndexPathHeightCache.m */,
+				17705E3A22530440000C5E1E /* UITableView+FDKeyedHeightCache.h */,
+				17705E362253043F000C5E1E /* UITableView+FDKeyedHeightCache.m */,
+				17705E3922530440000C5E1E /* UITableView+FDTemplateLayoutCell.h */,
+				17705E3B22530440000C5E1E /* UITableView+FDTemplateLayoutCell.m */,
+				17705E372253043F000C5E1E /* UITableView+FDTemplateLayoutCellDebug.h */,
+				17705E382253043F000C5E1E /* UITableView+FDTemplateLayoutCellDebug.m */,
+			);
+			path = FDTemplateLayoutCell;
+			sourceTree = "<group>";
+		};
+		17705E43225332E2000C5E1E /* YYFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				17705E44225332E2000C5E1E /* YYWeakProxy.m */,
+				17705E45225332E2000C5E1E /* YYFPSLabel.h */,
+				17705E46225332E2000C5E1E /* YYFPSLabel.m */,
+				17705E47225332E2000C5E1E /* YYWeakProxy.h */,
+			);
+			path = YYFPSLabel;
+			sourceTree = "<group>";
+		};
+		17705E5422535823000C5E1E /* SFAssemblyExternal */ = {
+			isa = PBXGroup;
+			children = (
+				17705E55225358D2000C5E1E /* Components */,
+				1757A8F421F86C25007A46FF /* Message */,
+				17705E51225353BB000C5E1E /* SFExternalAssemblyPlace.h */,
+				17705E52225353BB000C5E1E /* SFExternalAssemblyPlace.m */,
+			);
+			path = SFAssemblyExternal;
+			sourceTree = "<group>";
+		};
+		17705E55225358D2000C5E1E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				17705E4E2253520B000C5E1E /* SFYYLabelComponent.h */,
+				17705E4F2253520B000C5E1E /* SFYYLabelComponent.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		17B325B521F563630009FE48 = {
+			isa = PBXGroup;
+			children = (
+				17B325C021F563640009FE48 /* SFAssembly */,
+				17B325D921F563660009FE48 /* SFAssemblyUITests */,
+				17B325BF21F563640009FE48 /* Products */,
+				8C9D084C6F1B1E0B1F9EF5A7 /* Pods */,
+				483DCE89CC07241F98032E7C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		17B325BF21F563640009FE48 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				17B325BE21F563640009FE48 /* SFAssembly.app */,
+				17B325D621F563660009FE48 /* SFAssemblyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		17B325C021F563640009FE48 /* SFAssembly */ = {
+			isa = PBXGroup;
+			children = (
+				17B325E521F5636E0009FE48 /* Class */,
+				17705E5422535823000C5E1E /* SFAssemblyExternal */,
+				17705E43225332E2000C5E1E /* YYFPSLabel */,
+				17B325C121F563640009FE48 /* AppDelegate.h */,
+				17B325C221F563640009FE48 /* AppDelegate.m */,
+				17B325C421F563640009FE48 /* ViewController.h */,
+				17B325C521F563640009FE48 /* ViewController.m */,
+				17705E4A22534F1F000C5E1E /* TableViewCell.h */,
+				17705E4B22534F1F000C5E1E /* TableViewCell.m */,
+				17705E4122530BD6000C5E1E /* NSString+HHAdd.h */,
+				17705E4022530BD5000C5E1E /* NSString+HHAdd.m */,
+				17B325C721F563640009FE48 /* Main.storyboard */,
+				17B325CA21F563660009FE48 /* Assets.xcassets */,
+				17B325CC21F563660009FE48 /* LaunchScreen.storyboard */,
+				17B325CF21F563660009FE48 /* Info.plist */,
+				17B325D021F563660009FE48 /* main.m */,
+			);
+			path = SFAssembly;
+			sourceTree = "<group>";
+		};
+		17B325D921F563660009FE48 /* SFAssemblyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				17B325DA21F563660009FE48 /* SFAssemblyUITests.m */,
+				17B325DC21F563660009FE48 /* Info.plist */,
+			);
+			path = SFAssemblyUITests;
+			sourceTree = "<group>";
+		};
+		17B325E521F5636E0009FE48 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				176476AC2251F3240023EC03 /* Assembly */,
+				176476D12251F3DE0023EC03 /* Form */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		483DCE89CC07241F98032E7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C51FAB4CF0AC8C24F6F89BA6 /* libPods-SFAssembly.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8C9D084C6F1B1E0B1F9EF5A7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ACDF7F6FE1F0E3D36D290E50 /* Pods-SFAssembly.debug.xcconfig */,
+				B8C147D7993D848B35B83687 /* Pods-SFAssembly.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17B325BD21F563640009FE48 /* SFAssembly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17B325DF21F563660009FE48 /* Build configuration list for PBXNativeTarget "SFAssembly" */;
+			buildPhases = (
+				B04F353F274E5C77F7859D2E /* [CP] Check Pods Manifest.lock */,
+				17B325BA21F563640009FE48 /* Sources */,
+				17B325BB21F563640009FE48 /* Frameworks */,
+				17B325BC21F563640009FE48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SFAssembly;
+			productName = SFAssembly;
+			productReference = 17B325BE21F563640009FE48 /* SFAssembly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		17B325D521F563660009FE48 /* SFAssemblyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17B325E221F563660009FE48 /* Build configuration list for PBXNativeTarget "SFAssemblyUITests" */;
+			buildPhases = (
+				17B325D221F563660009FE48 /* Sources */,
+				17B325D321F563660009FE48 /* Frameworks */,
+				17B325D421F563660009FE48 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17B325D821F563660009FE48 /* PBXTargetDependency */,
+			);
+			name = SFAssemblyUITests;
+			productName = SFAssemblyUITests;
+			productReference = 17B325D621F563660009FE48 /* SFAssemblyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		17B325B621F563630009FE48 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = YunSL;
+				TargetAttributes = {
+					17B325BD21F563640009FE48 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					17B325D521F563660009FE48 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 17B325BD21F563640009FE48;
+					};
+				};
+			};
+			buildConfigurationList = 17B325B921F563630009FE48 /* Build configuration list for PBXProject "SFAssembly" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 17B325B521F563630009FE48;
+			productRefGroup = 17B325BF21F563640009FE48 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17B325BD21F563640009FE48 /* SFAssembly */,
+				17B325D521F563660009FE48 /* SFAssemblyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17B325BC21F563640009FE48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B325CE21F563660009FE48 /* LaunchScreen.storyboard in Resources */,
+				17B325CB21F563660009FE48 /* Assets.xcassets in Resources */,
+				17B325C921F563640009FE48 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B325D421F563660009FE48 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B04F353F274E5C77F7859D2E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SFAssembly-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		17B325BA21F563640009FE48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17705E3F22530440000C5E1E /* UITableView+FDTemplateLayoutCell.m in Sources */,
+				17705E4C22534F1F000C5E1E /* TableViewCell.m in Sources */,
+				176476F1225206A70023EC03 /* SFFormTableItem.m in Sources */,
+				176476C82251F3240023EC03 /* SFAssemblyLayoutContainer.m in Sources */,
+				17B325C621F563640009FE48 /* ViewController.m in Sources */,
+				176476F5225208A80023EC03 /* SFFormConfiguration.m in Sources */,
+				17705E4222530BD6000C5E1E /* NSString+HHAdd.m in Sources */,
+				176476FF225213C30023EC03 /* UITableViewCell+SFForm.m in Sources */,
+				176476D72251F6470023EC03 /* UICollectionView+SFForm.m in Sources */,
+				176476E02251F95B0023EC03 /* SFMultipleProxy.m in Sources */,
+				176476E6225201780023EC03 /* SFFormSection.m in Sources */,
+				1746A0E422526B69004B6431 /* SFFormAssemblyTableViewCell.m in Sources */,
+				176476EC225201E50023EC03 /* SFFormSectionHeaderFooter.m in Sources */,
+				1757A8F321F86C1E007A46FF /* SFMessageAssemblyLayoutDataSource.m in Sources */,
+				176476CC2251F3240023EC03 /* SFViewComponent.m in Sources */,
+				176476C92251F3240023EC03 /* SFAssemblyLayout.m in Sources */,
+				1725745121F5C22900765281 /* SFMessageAssemblyLayout.m in Sources */,
+				17B325D121F563660009FE48 /* main.m in Sources */,
+				176476CE2251F3240023EC03 /* SFImageViewComponent.m in Sources */,
+				176476D42251F6350023EC03 /* UITableView+SFForm.m in Sources */,
+				176476DA2251F6980023EC03 /* SFFormManager.m in Sources */,
+				17705E48225332E2000C5E1E /* YYWeakProxy.m in Sources */,
+				1748C57A2252F27200982A99 /* SFFormAssemblyTableItem.m in Sources */,
+				17705E3D22530440000C5E1E /* UITableView+FDKeyedHeightCache.m in Sources */,
+				176476DD2251F6C90023EC03 /* SFFormTableViewManager.m in Sources */,
+				176476FE225213C30023EC03 /* UITableViewHeaderFooterView+SFForm.m in Sources */,
+				176476F2225206A70023EC03 /* SFFormTableSection.m in Sources */,
+				17705E49225332E2000C5E1E /* YYFPSLabel.m in Sources */,
+				176476CA2251F3240023EC03 /* SFAssemblyPlace.m in Sources */,
+				17705E3C22530440000C5E1E /* UITableView+FDIndexPathHeightCache.m in Sources */,
+				176476CD2251F3240023EC03 /* SFLabelComponent.m in Sources */,
+				17647701225213C30023EC03 /* SFFormTableHeaderFooterView.m in Sources */,
+				176476D02251F3240023EC03 /* UIView+SFAssembly.m in Sources */,
+				17705E53225353BB000C5E1E /* SFExternalAssemblyPlace.m in Sources */,
+				176476E3225201070023EC03 /* SFFormItem.m in Sources */,
+				17705E3E22530440000C5E1E /* UITableView+FDTemplateLayoutCellDebug.m in Sources */,
+				17705E502253520B000C5E1E /* SFYYLabelComponent.m in Sources */,
+				17B325C321F563640009FE48 /* AppDelegate.m in Sources */,
+				176476CB2251F3240023EC03 /* SFButtonComponent.m in Sources */,
+				176476CF2251F3240023EC03 /* SFControlComponent.m in Sources */,
+				176476C72251F3240023EC03 /* SFAssemblyView.m in Sources */,
+				17647700225213C30023EC03 /* SFFormTableSectionHeaderFooter.m in Sources */,
+				1764770422521B660023EC03 /* SFFormSectionHeaderFooterLayout.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17B325D221F563660009FE48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17B325DB21F563660009FE48 /* SFAssemblyUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17B325D821F563660009FE48 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17B325BD21F563640009FE48 /* SFAssembly */;
+			targetProxy = 17B325D721F563660009FE48 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		17B325C721F563640009FE48 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17B325C821F563640009FE48 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		17B325CC21F563660009FE48 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				17B325CD21F563660009FE48 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		17B325DD21F563660009FE48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		17B325DE21F563660009FE48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		17B325E021F563660009FE48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACDF7F6FE1F0E3D36D290E50 /* Pods-SFAssembly.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3W6EMW6YK;
+				INFOPLIST_FILE = SFAssembly/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YunSL.SFAssembly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17B325E121F563660009FE48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8C147D7993D848B35B83687 /* Pods-SFAssembly.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3W6EMW6YK;
+				INFOPLIST_FILE = SFAssembly/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YunSL.SFAssembly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		17B325E321F563660009FE48 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3W6EMW6YK;
+				INFOPLIST_FILE = SFAssemblyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YunSL.SFAssemblyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SFAssembly;
+			};
+			name = Debug;
+		};
+		17B325E421F563660009FE48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X3W6EMW6YK;
+				INFOPLIST_FILE = SFAssemblyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = YunSL.SFAssemblyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SFAssembly;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		17B325B921F563630009FE48 /* Build configuration list for PBXProject "SFAssembly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B325DD21F563660009FE48 /* Debug */,
+				17B325DE21F563660009FE48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17B325DF21F563660009FE48 /* Build configuration list for PBXNativeTarget "SFAssembly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B325E021F563660009FE48 /* Debug */,
+				17B325E121F563660009FE48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17B325E221F563660009FE48 /* Build configuration list for PBXNativeTarget "SFAssemblyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17B325E321F563660009FE48 /* Debug */,
+				17B325E421F563660009FE48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 17B325B621F563630009FE48 /* Project object */;
+}
