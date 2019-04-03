@@ -35,6 +35,9 @@ typedef NS_ENUM(NSInteger,SFComponentLayoutMode) {
     SFComponentLayoutModeFill,
 };
 
+static NSInteger SFAssemblyPlacePriorityHigh = 1000;
+static NSInteger SFAssemblyPlacePriorityLow = 0;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SFAssemblyPlace : NSObject{
@@ -48,6 +51,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) CGFloat bottom;
 @property (nonatomic,assign) CGFloat width;
 @property (nonatomic,assign) CGFloat height;
+
+@property (nonatomic,assign) NSInteger priority;
 
 @property (nonatomic,assign) SFComponentLayoutMode widthLayoutMode;
 @property (nonatomic,assign) SFComponentLayoutMode heightLayoutMode;
@@ -64,6 +69,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) void (^onLoad)(SFAssemblyPlace *place, UIView *view);
 
 - (CGSize)componentBoundSizeThatFits:(CGSize)size;
+- (CGFloat)componentXWithComponentWidth:(CGFloat)componentWidth
+                               contentX:(CGFloat)contentX
+                           contentWidth:(CGFloat)contentWidth;
+- (CGFloat)componentYWithComponentHeight:(CGFloat)componentHeight
+                                contentY:(CGFloat)contentY
+                           contentHeight:(CGFloat)contentHeight;
 - (void)update;
 
 @end

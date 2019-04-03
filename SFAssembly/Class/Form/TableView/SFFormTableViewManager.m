@@ -42,11 +42,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [(SFFormTableSection *)[tableView.form_manager sectionAtIndex:section] header].size.height;
+    SFFormTableSection *tableViewSection = (SFFormTableSection *)[tableView.form_manager sectionAtIndex:section];
+    NSString *reuseIdentifier = tableViewSection.header.reuseIdentifier?:[SFFormTableViewManager configuration].reuseIdentifierForClassName(tableViewSection.header.className);
+    [tableView form_registerHeaderFooterViewWithClassName:tableViewSection.header.className reuseIdentifier:reuseIdentifier];
+    return [tableView fd_heightForHeaderFooterViewWithIdentifier:reuseIdentifier configuration:^(id headerFooterView) {
+        [headerFooterView setForm_headerFooter:tableViewSection.header];
+        [headerFooterView form_reloadForSection:tableViewSection];
+    }];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return [(SFFormTableSection *)[tableView.form_manager sectionAtIndex:section] footer].size.height;
+    return [(SFFormTableSection *)[tableView.form_manager sectionAtIndex:section] footer].layout.size.height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -123,8 +129,6 @@
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.sectionIndexTitles;
 }
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {}
 
 #pragma mark - pravite
 - (UITableViewHeaderFooterView *)_viewForTableSection:(SFFormTableSection *)section headerFooter:(SFFormSectionHeaderFooter *)sectionHeaderFooter {

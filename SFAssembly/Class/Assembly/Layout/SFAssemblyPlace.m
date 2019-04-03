@@ -26,6 +26,44 @@
     }
 }
 
+- (CGFloat)componentXWithComponentWidth:(CGFloat)componentWidth contentX:(CGFloat)contentX contentWidth:(CGFloat)contentWidth {
+    CGFloat x = 0;
+    switch (self.horizontalPosition) {
+        case SFComponentPositionHeader:{
+            x = contentX;
+        }
+            break;
+        case SFComponentPositionCenter:{
+            x = contentX + (contentWidth - componentWidth) * 0.5;
+        }
+            break;
+        case SFComponentPositionFooter:{
+            x = contentX + (contentWidth - componentWidth);
+        }
+            break;
+    }
+    return x;
+}
+
+- (CGFloat)componentYWithComponentHeight:(CGFloat)componentHeight contentY:(CGFloat)contentY contentHeight:(CGFloat)contentHeight {
+    CGFloat y = 0;
+    switch (self.verticalPosition) {
+        case SFComponentPositionHeader:{
+            y = contentY;
+        }
+            break;
+        case SFComponentPositionCenter:{
+            y = contentY + (contentHeight - componentHeight) * 0.5;
+        }
+            break;
+        case SFComponentPositionFooter:{
+            y = contentY + (contentHeight - componentHeight);
+        }
+            break;
+    }
+    return y;
+}
+
 - (CGSize)componentBoundSizeThatFits:(CGSize)size {
     if (size.width <= 0 || size.height <= 0) {
         return CGSizeZero;

@@ -21,6 +21,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 
 @implementation SFAssemblyView
 
+#pragma mark - life
 - (instancetype)init {
     if (self = [super init]) {
         [self addSubview:self.contentView];
@@ -38,11 +39,14 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [obj.component.view setFrame:obj.frame];
+        if (obj.component) {
+            [obj.component.view setFrame:obj.frame];
+        }
     }];
     [self.contentView setFrame:self.layout.container.frame];
 }
 
+#pragma mark - private
 - (void)_update {
     NSMutableDictionary *visibleReusableComponentViews = [NSMutableDictionary new];
     [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -75,6 +79,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
             [visibleReusableViews addObject:view];
         }
     }];
+    //将当前显示未被重用的控件移入可重用的控件中
     [self.visibleReusableComponentViews enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSMutableArray * _Nonnull obj, BOOL * _Nonnull stop) {
         NSMutableArray *reusableViews = self.reusableComponentViews[key];
         if (reusableViews == nil) {
@@ -86,6 +91,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
             [reusableViews addObject:obj];
         }];
     }];
+    //更新当前显示的控件列表
     [self setVisibleReusableComponentViews:visibleReusableComponentViews];
 }
 
@@ -110,6 +116,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
     return componentView;
 }
 
+#pragma mark - set/get
 - (void)setLayout:(SFAssemblyLayout *)layout {
     _layout = layout;
     [self _update];

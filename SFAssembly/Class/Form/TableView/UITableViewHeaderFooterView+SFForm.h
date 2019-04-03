@@ -21,4 +21,5 @@
 @interface UITableViewHeaderFooterView (SFForm)
 @property (nonatomic,assign) BOOL form_isLoad;
 @property (nonatomic,strong) SFFormSectionHeaderFooter *form_headerFooter;
+- (void)form_reloadForSection:(SFFormTableSection *)section;
 @end

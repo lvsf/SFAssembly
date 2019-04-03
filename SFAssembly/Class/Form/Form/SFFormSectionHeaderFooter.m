@@ -7,20 +7,25 @@
 //
 
 #import "SFFormSectionHeaderFooter.h"
+#import "SFFormSectionHeaderFooterLayoutDataSource.h"
 
 @implementation SFFormSectionHeaderFooter
-@synthesize topSeparator = _topSeparator;
-@synthesize title = _title;
-@synthesize detail = _detail;
+@synthesize sectionLayout = _sectionLayout;
 
 - (BOOL)shouldLoadHeaderFooter {
-    return self.places.count > 0 || (self.container.height > 0 && self.container.width > 0);
+    return (self.layout.places.count > 0 || self.view || self.layout.container.height > 0);
 }
 
-SFAssemblyLayoutPlaceGetter(SFAssemblyPlace,topSeparator)
+- (SFAssemblyLayout *)layout {
+    return _layout?:self.sectionLayout;
+}
 
-SFAssemblyLayoutPlaceGetter(SFAssemblyPlace,title)
-
-SFAssemblyLayoutPlaceGetter(SFAssemblyPlace,detail)
+- (SFFormSectionHeaderFooterLayout *)sectionLayout {
+    return _sectionLayout?:({
+        _sectionLayout = [SFFormSectionHeaderFooterLayout new];
+        _sectionLayout.dataSource = [SFFormSectionHeaderFooterLayoutDataSource new];
+        _sectionLayout;
+    });
+}
 
 @end

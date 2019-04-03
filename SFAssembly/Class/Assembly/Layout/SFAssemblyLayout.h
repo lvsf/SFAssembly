@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy,readonly) NSArray<SFAssemblyPlace *> *places;
 @property (nonatomic,assign,readonly) CGSize size;
 @property (nonatomic,assign,readonly) BOOL needsLayout;
+- (NSArray<SFAssemblyPlace *> *)places;
 - (void)addPlace:(SFAssemblyPlace *)assemblyPlace;
 - (void)setNeedsLayout;
 - (void)sizeToFit;

@@ -11,6 +11,18 @@
 
 @implementation UITableViewHeaderFooterView (SFForm)
 
+- (void)form_reloadForSection:(SFFormTableSection *)section {
+    if (self.form_isLoad == NO) {
+        self.form_isLoad = YES;
+        if ([self respondsToSelector:@selector(headerFooterViewDidLoad:headerFooter:)]) {
+            [(id<SFTableViewHeaderFooterViewProtocol>)self headerFooterViewDidLoad:section headerFooter:self.form_headerFooter];
+        }
+    }
+    if ([self respondsToSelector:@selector(headerFooterViewWillAppear:headerFooter:)]) {
+        [(id<SFTableViewHeaderFooterViewProtocol>)self headerFooterViewWillAppear:section headerFooter:self.form_headerFooter];
+    }
+}
+
 - (void)setForm_headerFooter:(SFFormSectionHeaderFooter *)form_headerFooter {
     objc_setAssociatedObject(self, @selector(form_headerFooter), form_headerFooter, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

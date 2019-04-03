@@ -1,5 +1,5 @@
 //
-//  SFFormSectionHeaderFooterLayout.h
+//  SFFormSectionHeaderFooterLayoutDataSource.h
 //  SFAssembly
 //
 //  Created by YunSL on 2019/4/1.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SFFormSectionHeaderFooterLayout : NSObject<SFAssemblyLayoutDataSource>
+@interface SFFormSectionHeaderFooterLayoutDataSource : NSObject<SFAssemblyLayoutDataSource>
 
 @end
 

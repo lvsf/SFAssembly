@@ -41,13 +41,11 @@
     if (width > 0 && height > 0) {
         contentBoundWidth = width - self.container.insets.left - self.container.insets.right;
         contentBoundHeight = height - self.container.insets.top - self.container.insets.bottom;
-        BOOL widthLayoutFit = self.container.widthLayoutMode == SFComponentLayoutModeFit || width == CGFLOAT_MAX;
-        BOOL heightLayoutFit = self.container.heightLayoutMode == SFComponentLayoutModeFit || height == CGFLOAT_MAX;
-        if (widthLayoutFit || heightLayoutFit) {
-            CGSize contentBoundSize = CGSizeZero;
-            if ([self.dataSource respondsToSelector:@selector(assemblyLayout:sizeThatFits:)]) {
-                contentBoundSize = [self.dataSource assemblyLayout:self sizeThatFits:CGSizeMake(contentBoundWidth,contentBoundHeight)];
-            }
+        if ([self.dataSource respondsToSelector:@selector(assemblyLayout:sizeThatFits:)]) {
+            CGSize contentBoundSize = [self.dataSource assemblyLayout:self
+                                                         sizeThatFits:CGSizeMake(contentBoundWidth,contentBoundHeight)];
+            BOOL widthLayoutFit = self.container.widthLayoutMode == SFComponentLayoutModeFit || width == CGFLOAT_MAX;
+            BOOL heightLayoutFit = self.container.heightLayoutMode == SFComponentLayoutModeFit || height == CGFLOAT_MAX;
             if (widthLayoutFit) {
                 contentBoundWidth = contentBoundSize.width;
             }

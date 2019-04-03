@@ -33,26 +33,22 @@
 }
 
 - (void)form_setDelegate:(id<UITableViewDelegate>)delegate {
+    [self form_setDelegate:delegate];
     if (self.form_enable) {
         [self multipleDelegate].originalProxy = delegate;
         if ([self.delegate isEqual:[self multipleDelegate]] == NO) {
             [self form_setDelegate:[self multipleDelegate]];
         }
     }
-    else {
-        [self form_setDelegate:delegate];
-    }
 }
 
 - (void)form_setDataSource:(id<UITableViewDataSource>)dataSource {
+    [self form_setDataSource:dataSource];
     if (self.form_enable) {
         [self multipleDataSource].originalProxy = dataSource;
         if ([self.dataSource isEqual:[self multipleDataSource]] == NO) {
             [self form_setDataSource:[self multipleDataSource]];
         }
-    }
-    else {
-        [self form_setDataSource:dataSource];
     }
 }
 

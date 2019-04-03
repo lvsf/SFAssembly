@@ -16,7 +16,7 @@
 #import "YYFPSLabel.h"
 #import <Masonry.h>
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UIScrollViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) YYFPSLabel *fpsLabel;
 @end
 
@@ -32,14 +32,27 @@
     UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(10, 25, 255, 500) style:UITableViewStyleGrouped];
     t.backgroundColor = [UIColor orangeColor];
     t.estimatedRowHeight = 0;
+
+    t.delegate = self;
+    t.dataSource = self;
     t.form_enable = YES;
+
     for (NSInteger i = 0; i < 50; i++) {
         SFFormAssemblyTableItem *item = [SFFormAssemblyTableItem new];
+        
+        SFFormTableSection *section = [SFFormTableSection new];
+        [section addItem:item];
+        [section.header.sectionLayout.container setHeight:44];
+        [section.header.sectionLayout.title.label setText:@"123"];
+        [section.header.sectionLayout.title.label setTextColor:[UIColor blueColor]];
+        [section.header.sectionLayout.title.label setFont:[UIFont systemFontOfSize:15]];
+        [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(20)]]];
+        
         SFMessageAssemblyLayout *layout = [self layout];
         layout.content.yyLabel.text = [NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(350)]];
         item.layout = layout;
         item.cacheHeight = YES;
-        t.form_manager.defaultSection.addItem(item);
+        t.form_manager.addSection(section);
     }
     [self.view addSubview:t];
     [t mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -102,6 +115,10 @@
     layout.dataSource = [SFMessageAssemblyLayoutDataSource new];
     
     return layout;
+}
+
+- (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return @[@"1",@"2",@"3"];
 }
 
 - (YYFPSLabel *)fpsLabel {

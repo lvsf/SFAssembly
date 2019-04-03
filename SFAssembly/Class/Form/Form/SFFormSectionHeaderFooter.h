@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "SFAssemblyLayout.h"
+#import "SFFormSectionHeaderFooterLayout.h"
 
 typedef NS_ENUM(NSInteger,SFFormSectionHeaderFooterKind) {
     SFFormSectionKindHeader = 0,
@@ -22,14 +22,14 @@ typedef NS_ENUM(NSInteger,SFFormSectionHeaderFooterKind) {
 - (void)formSectionHeaderFooterDidSelected:(SFFormSectionHeaderFooter *)headerFooter;
 @end
 
-@interface SFFormSectionHeaderFooter : SFAssemblyLayout
+@interface SFFormSectionHeaderFooter : NSObject
 @property (nonatomic,assign) SFFormSectionHeaderFooterKind kind;
 @property (nonatomic,copy) NSString *className;
 @property (nonatomic,copy) NSString *reuseIdentifier;
 @property (nonatomic,strong) id object;
-@property (nonatomic,strong,readonly) SFAssemblyPlace *topSeparator;
-@property (nonatomic,strong,readonly) SFAssemblyPlace *title;
-@property (nonatomic,strong,readonly) SFAssemblyPlace *detail;
+@property (nonatomic,strong) SFAssemblyLayout *layout;
+@property (nonatomic,strong,readonly) SFFormSectionHeaderFooterLayout *sectionLayout;
+@property (nonatomic,weak) UIView *view;
 @property (nonatomic,weak) id<SFFormSectionHeaderFooterDelegate> delegate;
 - (BOOL)shouldLoadHeaderFooter;
 @end

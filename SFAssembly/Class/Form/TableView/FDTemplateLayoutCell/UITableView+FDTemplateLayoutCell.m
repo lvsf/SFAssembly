@@ -239,7 +239,7 @@
     if (!templateHeaderFooterView) {
         templateHeaderFooterView = [self dequeueReusableHeaderFooterViewWithIdentifier:identifier];
         NSAssert(templateHeaderFooterView != nil, @"HeaderFooterView must be registered to table view for identifier - %@", identifier);
-        templateHeaderFooterView.contentView.translatesAutoresizingMaskIntoConstraints = NO;
+        templateHeaderFooterView.contentView.autoresizingMask = UIViewAutoresizingNone;
         templateHeaderFooterViews[identifier] = templateHeaderFooterView;
         [self fd_debugLog:[NSString stringWithFormat:@"layout header footer view created - %@", identifier]];
     }
@@ -249,6 +249,11 @@
 
 - (CGFloat)fd_heightForHeaderFooterViewWithIdentifier:(NSString *)identifier configuration:(void (^)(id))configuration {
     UITableViewHeaderFooterView *templateHeaderFooterView = [self fd_templateHeaderFooterViewForReuseIdentifier:identifier];
+    
+    // Customize and provide content for our template cell.
+    if (configuration) {
+        configuration(templateHeaderFooterView);
+    }
     
     NSLayoutConstraint *widthFenceConstraint = [NSLayoutConstraint constraintWithItem:templateHeaderFooterView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:CGRectGetWidth(self.frame)];
     [templateHeaderFooterView addConstraint:widthFenceConstraint];
