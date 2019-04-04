@@ -20,19 +20,28 @@ NS_ASSUME_NONNULL_BEGIN
     });\
 }
 
+#define SFAssemblyLayoutPlaceGetterWithConfiguration(class,property,configuration) \
+- (class *)property {\
+    return _##property?:({ \
+        _##property = [class new]; \
+        [self addPlace:_##property]; \
+        configuration; \
+        _##property; \
+        });\
+}
+
 @class SFAssemblyLayout;
-@protocol SFAssemblyLayoutDataSource <NSObject>
+@protocol SFAssemblyLayoutProtocol <NSObject>
+@required
+- (NSArray<SFAssemblyPlace *> *)places;
 - (CGSize)assemblyLayout:(SFAssemblyLayout *)layout sizeThatFits:(CGSize)size;
 @end
 
-@interface SFAssemblyLayout : NSObject
-@property (nonatomic,strong) id<SFAssemblyLayoutDataSource> dataSource;
+@interface SFAssemblyLayout : NSObject<SFAssemblyLayoutProtocol>
 @property (nonatomic,strong) SFAssemblyLayoutContainer *container;
-@property (nonatomic,copy,readonly) NSArray<SFAssemblyPlace *> *places;
 @property (nonatomic,assign,readonly) CGSize size;
 @property (nonatomic,assign,readonly) BOOL needsLayout;
-- (NSArray<SFAssemblyPlace *> *)places;
-- (void)addPlace:(SFAssemblyPlace *)assemblyPlace;
+- (void)addPlace:(SFAssemblyPlace *)place;
 - (void)setNeedsLayout;
 - (void)sizeToFit;
 - (CGSize)sizeThatFits:(CGSize)size;

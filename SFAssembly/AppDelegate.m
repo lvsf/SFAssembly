@@ -21,6 +21,8 @@
     UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:[RootViewController new]];
     [self.window setRootViewController:n];
     [self.window makeKeyAndVisible];
+
+    
     return YES;
 }
 

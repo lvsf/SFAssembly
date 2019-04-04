@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "SFAssemblyLayout.h"
-#import "SFAssemblyPlace.h"
 #import "SFExternalAssemblyPlace.h"
 
 NS_ASSUME_NONNULL_BEGIN

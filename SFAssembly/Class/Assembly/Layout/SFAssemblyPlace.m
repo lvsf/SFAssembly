@@ -68,15 +68,17 @@
     if (size.width <= 0 || size.height <= 0) {
         return CGSizeZero;
     }
+    //优先使用指定的值
     CGFloat width = self.width;
     CGFloat height = self.height;
-    if (width <= 0 || height <= 0) {
-        if (width <= 0) {
-            width = size.width;
-        }
-        if (height <= 0) {
-            height = size.height;
-        }
+    //使用布局传入的值
+    if (width <= 0) {
+        width = size.width;
+    }
+    if (height <= 0) {
+        height = size.height;
+    }
+    if (_component && width > 0 && height > 0) {
         BOOL widthLayoutFit = self.widthLayoutMode == SFComponentLayoutModeFit || width == CGFLOAT_MAX;
         BOOL heightLayoutFit = self.heightLayoutMode == SFComponentLayoutModeFit || height == CGFLOAT_MAX;
         if (widthLayoutFit || heightLayoutFit) {

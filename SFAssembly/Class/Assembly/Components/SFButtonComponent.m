@@ -55,7 +55,8 @@
 }
 
 - (CGSize)componentViewBoundSizeThatFits:(CGSize)size {
-    return [self.view sizeThatFits:size];
+    NSLog(@"button componentViewBoundSizeThatFits");
+    return [[(UIButton *)self.view titleLabel] sizeThatFits:size];
 }
 
 - (void)p_updateWithButton:(UIButton *)button status:(SFButtonComponentStatus *)componentStatus state:(UIControlState)state {

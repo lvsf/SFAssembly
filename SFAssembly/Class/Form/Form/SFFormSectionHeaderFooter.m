@@ -7,7 +7,6 @@
 //
 
 #import "SFFormSectionHeaderFooter.h"
-#import "SFFormSectionHeaderFooterLayoutDataSource.h"
 
 @implementation SFFormSectionHeaderFooter
 @synthesize sectionLayout = _sectionLayout;
@@ -23,7 +22,6 @@
 - (SFFormSectionHeaderFooterLayout *)sectionLayout {
     return _sectionLayout?:({
         _sectionLayout = [SFFormSectionHeaderFooterLayout new];
-        _sectionLayout.dataSource = [SFFormSectionHeaderFooterLayoutDataSource new];
         _sectionLayout;
     });
 }

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "SFMessageAssemblyLayout.h"
-#import "SFMessageAssemblyLayoutDataSource.h"
 #import "SFAssemblyView.h"
 #import "SFFormAssemblyTableItem.h"
 #import "UITableView+SFForm.h"
@@ -42,12 +41,13 @@
         
         SFFormTableSection *section = [SFFormTableSection new];
         [section addItem:item];
-        [section.header.sectionLayout.container setHeight:44];
+        //[section.header.sectionLayout.container setHeight:44];
         [section.header.sectionLayout.title.label setText:@"123"];
         [section.header.sectionLayout.title.label setTextColor:[UIColor blueColor]];
         [section.header.sectionLayout.title.label setFont:[UIFont systemFontOfSize:15]];
-        [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(20)]]];
-        
+        [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"%@:section%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(100)]]];
+        [section.header.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+        [section.header.sectionLayout.detail.label setNumberOfLines:0];
         SFMessageAssemblyLayout *layout = [self layout];
         layout.content.yyLabel.text = [NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(350)]];
         item.layout = layout;
@@ -112,7 +112,6 @@
     layout.content.yyLabel.backgroundColor = [UIColor whiteColor];
     
     layout.container.insets = UIEdgeInsetsMake(15, 15, 15, 15);
-    layout.dataSource = [SFMessageAssemblyLayoutDataSource new];
     
     return layout;
 }
