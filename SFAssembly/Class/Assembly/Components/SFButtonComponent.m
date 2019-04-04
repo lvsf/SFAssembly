@@ -55,7 +55,6 @@
 }
 
 - (CGSize)componentViewBoundSizeThatFits:(CGSize)size {
-    NSLog(@"button componentViewBoundSizeThatFits");
     return [[(UIButton *)self.view titleLabel] sizeThatFits:size];
 }
 

@@ -37,4 +37,5 @@
 
 /// Height cache by key. Generally, you don't need to use it directly.
 @property (nonatomic, strong, readonly) FDKeyedHeightCache *fd_keyedHeightCache;
+@property (nonatomic, strong, readonly) FDKeyedHeightCache *fd_keyedHeaderFooterHeightCache;
 @end

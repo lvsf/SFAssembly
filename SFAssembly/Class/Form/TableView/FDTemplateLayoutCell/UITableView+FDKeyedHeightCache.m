@@ -83,4 +83,13 @@
     return cache;
 }
 
+- (FDKeyedHeightCache *)fd_keyedHeaderFooterHeightCache {
+    FDKeyedHeightCache *cache = objc_getAssociatedObject(self, _cmd);
+    if (!cache) {
+        cache = [FDKeyedHeightCache new];
+        objc_setAssociatedObject(self, _cmd, cache, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    return cache;
+}
+
 @end

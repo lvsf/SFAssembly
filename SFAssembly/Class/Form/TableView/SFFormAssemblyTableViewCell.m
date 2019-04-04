@@ -8,6 +8,7 @@
 
 #import "SFFormAssemblyTableViewCell.h"
 #import "SFAssemblyView.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface SFFormAssemblyTableViewCell()
 @property (nonatomic,strong) SFAssemblyView *assemblyView;
@@ -32,7 +33,12 @@
 }
 
 - (void)cellWillAppear:(SFFormAssemblyTableItem *)item {
-    [self.assemblyView setLayout:item.layout];
+    if (self.fd_isTemplateLayoutCell) {
+        [self.assemblyView setLayoutForHeightCalculate:item.layout];
+    }
+    else {
+        [self.assemblyView setLayout:item.layout];
+    }
 }
 
 - (void)layoutSubviews {

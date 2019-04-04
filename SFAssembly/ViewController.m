@@ -23,31 +23,47 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [SFFormTableViewManager configuration].reuseIdentifierForClassName = ^(NSString * _Nonnull className) {
         return [NSString stringWithFormat:@"%@ID",className];
     };
-    
     UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(10, 25, 255, 500) style:UITableViewStyleGrouped];
-    t.backgroundColor = [UIColor orangeColor];
+    t.backgroundColor = [UIColor whiteColor];
     t.estimatedRowHeight = 0;
-
+    t.estimatedSectionFooterHeight = 0;
+    t.estimatedSectionHeaderHeight = 0;
     t.delegate = self;
     t.dataSource = self;
     t.form_enable = YES;
-
-    for (NSInteger i = 0; i < 50; i++) {
+    for (NSInteger i = 0; i < 25; i++) {
         SFFormAssemblyTableItem *item = [SFFormAssemblyTableItem new];
-        
         SFFormTableSection *section = [SFFormTableSection new];
         [section addItem:item];
-        //[section.header.sectionLayout.container setHeight:44];
         [section.header.sectionLayout.title.label setText:@"123"];
         [section.header.sectionLayout.title.label setTextColor:[UIColor blueColor]];
         [section.header.sectionLayout.title.label setFont:[UIFont systemFontOfSize:15]];
-        [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"%@:section%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(100)]]];
+        [section.header.sectionLayout.detail setLeft:15];
+        [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"header index:%@ %@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(100)]]];
         [section.header.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
-        [section.header.sectionLayout.detail.label setNumberOfLines:0];
+        [section.header.sectionLayout.container setBackgroundColor:[UIColor orangeColor]];
+     
+        [section.header.sectionLayout.topSeparator.view setBackgroundColor:[UIColor redColor]];
+        [section.header.sectionLayout.topSeparator setHeight:1];
+        
+        if (i == 0 || i == 5) {
+            [section.footer.sectionLayout.title setCustomView:[UISwitch new]];
+        }
+        else {
+            [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
+            [section.footer.sectionLayout.title.label setText:[NSString stringWithFormat:@"footer index:%@",@(i)]];
+            [section.footer.sectionLayout.title.label setTextColor:[UIColor blueColor]];
+            [section.footer.sectionLayout.title.label setFont:[UIFont boldSystemFontOfSize:20]];
+        }
+        
+        [section.footer.sectionLayout.title setHorizontalPosition:SFComponentPositionCenter];
+        [section.footer.sectionLayout.container setInsets:UIEdgeInsetsMake(25, 25, 25, 25)];
+        [section.footer.sectionLayout.container setBackgroundColor:[UIColor cyanColor]];
+        [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
+        
         SFMessageAssemblyLayout *layout = [self layout];
         layout.content.yyLabel.text = [NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(350)]];
         item.layout = layout;
@@ -58,7 +74,6 @@
     [t mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.width.height.equalTo(self.view);
     }];
-    
     UIView *bar = [[UIApplication sharedApplication] valueForKey:@"statusBar"];
     [bar addSubview:self.fpsLabel];
 }
@@ -78,7 +93,6 @@
         view.layer.borderColor = [UIColor blueColor].CGColor;
         view.layer.borderWidth = 2;
     }];
-    
     layout.title.label.text = @"书评标题";
     layout.title.label.textColor = [UIColor blackColor];
     layout.title.label.font = [UIFont boldSystemFontOfSize:23];
@@ -112,7 +126,6 @@
     layout.content.yyLabel.backgroundColor = [UIColor whiteColor];
     
     layout.container.insets = UIEdgeInsetsMake(15, 15, 15, 15);
-    
     return layout;
 }
 

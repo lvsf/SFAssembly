@@ -8,10 +8,10 @@
 
 #import "SFFormTableHeaderFooterView.h"
 #import "SFAssemblyView.h"
+#import "UITableView+FDTemplateLayoutCell.h"
 
 @interface SFFormTableHeaderFooterView()
 @property (nonatomic,strong) SFAssemblyView *assemblyView;
-@property (nonatomic,strong) UIView *displayView;
 @end
 
 @implementation SFFormTableHeaderFooterView
@@ -23,41 +23,30 @@
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    CGSize boundSize = size;
-    if (self.form_headerFooter.view) {
-        if (boundSize.height == 0 || boundSize.height == CGFLOAT_MAX) {
-            boundSize.height = CGRectGetHeight(self.form_headerFooter.view.bounds);
-        }
-    }
-    else {
-        [self.form_headerFooter.layout.container setWidth:size.width];
-        [self.form_headerFooter.layout.container setHeight:size.height?:CGFLOAT_MAX];
-        [self.form_headerFooter.layout sizeToFit];
-        boundSize = self.form_headerFooter.layout.size;
-    }
-    return boundSize;
+    [self.form_headerFooter.layout.container setWidth:size.width];
+    [self.form_headerFooter.layout.container setHeight:size.height?:CGFLOAT_MAX];
+    [self.form_headerFooter.layout sizeToFit];
+    return self.form_headerFooter.layout.size;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self.displayView setFrame:self.contentView.bounds];
+    [self.assemblyView setFrame:self.contentView.bounds];
 }
 
 - (void)headerFooterViewDidLoad:(SFFormTableSection *)section headerFooter:(SFFormSectionHeaderFooter *)headerFooter {
-    [self setBackgroundView:[UIView new]];
+    [self.backgroundView setBackgroundColor:[UIColor clearColor]];
+    [self.contentView addSubview:self.assemblyView];
 }
 
 - (void)headerFooterViewWillAppear:(SFFormTableSection *)section headerFooter:(SFFormSectionHeaderFooter *)headerFooter {
-    [self.displayView removeFromSuperview];
-    if (headerFooter.view) {
-        [self setDisplayView:headerFooter.view];
+    if (self.fd_isTemplateLayoutHeaderFooterView) {
+        [self.assemblyView setLayoutForHeightCalculate:headerFooter.layout];
     }
     else {
-        [self setDisplayView:self.assemblyView];
         [self.assemblyView setLayout:headerFooter.layout];
+        [self setNeedsLayout];
     }
-    [self.contentView addSubview:self.displayView];
-    [self setNeedsLayout];
 }
 
 - (SFAssemblyView *)assemblyView {

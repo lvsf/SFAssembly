@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SFAssemblyLayoutContainer : SFAssemblyPlace
 @property (nonatomic,assign) UIEdgeInsets insets;
+@property (nonatomic,strong) UIColor *backgroundColor;
+@property (nonatomic,strong) UIColor *containerColor;
 @end
 
 NS_ASSUME_NONNULL_END

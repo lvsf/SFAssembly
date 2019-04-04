@@ -19,7 +19,7 @@
     if ([layout isMemberOfClass:[SFFormSectionHeaderFooterLayout class]]) {
         SFFormSectionHeaderFooterLayout *sectionLayout = (SFFormSectionHeaderFooterLayout *)layout;
         CGRect topSeparatorFrame = CGRectZero;
-        if (sectionLayout.topSeparator.component) {
+        if (sectionLayout.topSeparator.visible) {
             topSeparatorFrame.size = [sectionLayout.topSeparator componentBoundSizeThatFits:CGSizeMake(boundSize.width,sectionLayout.topSeparator.height)];
         }
         CGFloat layoutHeight = size.height - CGRectGetHeight(topSeparatorFrame);
@@ -29,7 +29,7 @@
         CGRect titleFrame = CGRectMake(0, 0, 0, 0);
         
         if (sectionLayout.title.priority >= sectionLayout.detail.priority) {
-            if (sectionLayout.title.component) {
+            if (sectionLayout.title.visible) {
                 titleFrame.size = [sectionLayout.title componentBoundSizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
             }
             titleFrame.origin.x = [sectionLayout.title componentXWithComponentWidth:titleFrame.size.width
@@ -38,7 +38,7 @@
             layoutWidth -= CGRectGetMaxX(titleFrame);
             
             CGFloat detaiLeft = CGRectGetWidth(titleFrame)?sectionLayout.detail.left:0;
-            if (sectionLayout.detail.component) {
+            if (sectionLayout.detail.visible) {
                 layoutWidth -= detaiLeft;
                 detailFrame.size = [sectionLayout.detail componentBoundSizeThatFits:CGSizeMake(layoutWidth,layoutHeight)];
             }
@@ -47,13 +47,13 @@
                                                                          contentWidth:layoutWidth];
         }
         else {
-            if (sectionLayout.detail.component) {
+            if (sectionLayout.detail.visible) {
                 detailFrame.size = [sectionLayout.detail componentBoundSizeThatFits:CGSizeMake(layoutWidth,layoutHeight)];
             }
             layoutWidth -= CGRectGetWidth(detailFrame);
             
             CGFloat titleRight = CGRectGetWidth(detailFrame)?sectionLayout.detail.left:0;
-            if (sectionLayout.title.component) {
+            if (sectionLayout.title.visible) {
                 layoutWidth -= titleRight;
                 titleFrame.size = [sectionLayout.title componentBoundSizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
             }

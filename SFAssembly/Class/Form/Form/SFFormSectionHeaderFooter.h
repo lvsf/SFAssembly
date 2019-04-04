@@ -26,10 +26,10 @@ typedef NS_ENUM(NSInteger,SFFormSectionHeaderFooterKind) {
 @property (nonatomic,assign) SFFormSectionHeaderFooterKind kind;
 @property (nonatomic,copy) NSString *className;
 @property (nonatomic,copy) NSString *reuseIdentifier;
+@property (nonatomic,assign) BOOL cacheHeight;
 @property (nonatomic,strong) id object;
 @property (nonatomic,strong) SFAssemblyLayout *layout;
 @property (nonatomic,strong,readonly) SFFormSectionHeaderFooterLayout *sectionLayout;
-@property (nonatomic,weak) UIView *view;
 @property (nonatomic,weak) id<SFFormSectionHeaderFooterDelegate> delegate;
 - (BOOL)shouldLoadHeaderFooter;
 @end

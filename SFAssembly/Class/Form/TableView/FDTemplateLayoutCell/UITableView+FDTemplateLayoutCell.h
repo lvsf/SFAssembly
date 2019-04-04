@@ -82,6 +82,8 @@
 ///
 - (CGFloat)fd_heightForHeaderFooterViewWithIdentifier:(NSString *)identifier configuration:(void (^)(id headerFooterView))configuration;
 
+- (CGFloat)fd_heightForHeaderFooterViewWithIdentifier:(NSString *)identifier cacheByKey:(id<NSCopying>)key configuration:(void (^)(id headerFooterView))configuration;
+
 @end
 
 @interface UITableViewCell (FDTemplateLayoutCell)
@@ -105,4 +107,8 @@
 ///
 @property (nonatomic, assign) BOOL fd_enforceFrameLayout;
 
+@end
+
+@interface UITableViewHeaderFooterView (FDTemplateLayoutHeaderFooterView)
+@property (nonatomic, assign) BOOL fd_isTemplateLayoutHeaderFooterView;
 @end

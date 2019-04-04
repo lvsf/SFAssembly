@@ -16,8 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *className;
 @property (nonatomic,copy) NSString *(^validator)(SFFormItem *item);
 @property (nonatomic,assign) BOOL verify;
-@property (nonatomic,strong) NSIndexPath *indexPath;
 @property (nonatomic,strong) id object;
+@property (nonatomic,strong) NSIndexPath *indexPath;
 @end
 
 NS_ASSUME_NONNULL_END

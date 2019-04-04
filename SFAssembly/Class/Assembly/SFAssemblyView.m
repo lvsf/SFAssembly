@@ -17,6 +17,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 @interface SFAssemblyView()
 @property (nonatomic,strong) NSMutableDictionary <NSString *,NSMutableArray *> *reusableComponentViews;
 @property (nonatomic,strong) NSMutableDictionary <NSString *,NSMutableArray *> *visibleReusableComponentViews;
+@property (nonatomic,strong) UIView *customComponentView;
 @end
 
 @implementation SFAssemblyView
@@ -39,7 +40,10 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.component) {
+        if (obj.customView) {
+            [obj.customView setFrame:obj.frame];
+        }
+        else {
             [obj.component.view setFrame:obj.frame];
         }
     }];
@@ -47,38 +51,51 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 }
 
 #pragma mark - private
-- (void)_update {
+- (void)_updateForHeightCalculate:(BOOL)forHeightCalculate {
+    if (!forHeightCalculate) {
+        [self.customComponentView removeFromSuperview];
+        [self setCustomComponentView:nil];
+    }
     NSMutableDictionary *visibleReusableComponentViews = [NSMutableDictionary new];
     [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (obj.component) {
-            //从当前显示的控件中取可重用的控件
-            UIView *view = [self _dequeueVisibleReusableViewWithComponent:obj.component];
-            //从重用池中取可重用的控件
-            if (view == nil) {
-                view = [self _dequeueReusableViewWithComponent:obj.component];
+        if (obj.customView) {
+            if (!forHeightCalculate) {
+                [self.contentView addSubview:obj.customView];
+                [self setCustomComponentView:obj.customView];
             }
-            //新建控件
-            if (view == nil) {
-                view = [obj.component.class componentView];
-                [self.contentView addSubview:view];
-                if ([obj.component respondsToSelector:@selector(componentViewDidLoad:)]) {
-                    [obj.component componentViewDidLoad:view];
+        }
+        else {
+            if (obj.component) {
+                //从当前显示的控件中取可重用的控件
+                UIView *view = [self _dequeueVisibleReusableViewWithComponent:obj.component];
+                //从重用池中取可重用的控件
+                if (view == nil) {
+                    view = [self _dequeueReusableViewWithComponent:obj.component];
                 }
+                //新建控件
+                if (view == nil) {
+                    view = [obj.component.class componentView];
+                    [self.contentView addSubview:view];
+                    if ([obj.component respondsToSelector:@selector(componentViewDidLoad:)]) {
+                        [obj.component componentViewDidLoad:view];
+                    }
+                }
+                if ([obj.component respondsToSelector:@selector(componentViewWillAppear:)]) {
+                    [obj.component componentViewWillAppear:view];
+                }
+                view.component = obj.component;
+                obj.component.view = view;
+                NSString *key = SFReusableKeyForComponent(obj.component);
+                NSMutableArray *visibleReusableViews = visibleReusableComponentViews[key];
+                if (visibleReusableViews == nil) {
+                    visibleReusableViews = [NSMutableArray new];
+                    visibleReusableComponentViews[key] = visibleReusableViews;
+                }
+                [visibleReusableViews addObject:view];
             }
-            if ([obj.component respondsToSelector:@selector(componentViewWillAppear:)]) {
-                [obj.component componentViewWillAppear:view];
-            }
-            view.component = obj.component;
-            obj.component.view = view;
-            NSString *key = SFReusableKeyForComponent(obj.component);
-            NSMutableArray *visibleReusableViews = visibleReusableComponentViews[key];
-            if (visibleReusableViews == nil) {
-                visibleReusableViews = [NSMutableArray new];
-                visibleReusableComponentViews[key] = visibleReusableViews;
-            }
-            [visibleReusableViews addObject:view];
         }
     }];
+    
     //将当前显示未被重用的控件移入可重用的控件中
     [self.visibleReusableComponentViews enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSMutableArray * _Nonnull obj, BOOL * _Nonnull stop) {
         NSMutableArray *reusableViews = self.reusableComponentViews[key];
@@ -93,6 +110,12 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
     }];
     //更新当前显示的控件列表
     [self setVisibleReusableComponentViews:visibleReusableComponentViews];
+    
+    //更新容器视图
+    if (!forHeightCalculate) {
+        [self.contentView setBackgroundColor:self.layout.container.containerColor];
+        [self setBackgroundColor:self.layout.container.backgroundColor];
+    }
 }
 
 - (UIView *)_dequeueReusableViewWithComponent:(id<SFAssemblyComponentProtocol>)component {
@@ -117,9 +140,14 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 }
 
 #pragma mark - set/get
+- (void)setLayoutForHeightCalculate:(SFAssemblyLayout *)layout {
+    _layout = layout;
+    [self _updateForHeightCalculate:YES];
+}
+
 - (void)setLayout:(SFAssemblyLayout *)layout {
     _layout = layout;
-    [self _update];
+    [self _updateForHeightCalculate:NO];
     [self setNeedsLayout];
 }
 

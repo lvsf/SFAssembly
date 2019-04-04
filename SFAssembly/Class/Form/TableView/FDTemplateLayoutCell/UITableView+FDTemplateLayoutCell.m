@@ -239,6 +239,7 @@
     if (!templateHeaderFooterView) {
         templateHeaderFooterView = [self dequeueReusableHeaderFooterViewWithIdentifier:identifier];
         NSAssert(templateHeaderFooterView != nil, @"HeaderFooterView must be registered to table view for identifier - %@", identifier);
+        templateHeaderFooterView.fd_isTemplateLayoutHeaderFooterView = YES;
         templateHeaderFooterView.contentView.autoresizingMask = UIViewAutoresizingNone;
         templateHeaderFooterViews[identifier] = templateHeaderFooterView;
         [self fd_debugLog:[NSString stringWithFormat:@"layout header footer view created - %@", identifier]];
@@ -246,8 +247,13 @@
     
     return templateHeaderFooterView;
 }
-
-- (CGFloat)fd_heightForHeaderFooterViewWithIdentifier:(NSString *)identifier configuration:(void (^)(id))configuration {
+- (CGFloat)fd_heightForHeaderFooterViewWithIdentifier:(NSString *)identifier cacheByKey:(id<NSCopying>)key configuration:(void (^)(id))configuration {
+    if (!identifier) {
+        return 0;
+    }
+    if (key && [self.fd_keyedHeaderFooterHeightCache existsHeightForKey:key]) {
+        return [self.fd_keyedHeaderFooterHeightCache heightForKey:key];
+    }
     UITableViewHeaderFooterView *templateHeaderFooterView = [self fd_templateHeaderFooterViewForReuseIdentifier:identifier];
     
     // Customize and provide content for our template cell.
@@ -264,7 +270,15 @@
         fittingHeight = [templateHeaderFooterView sizeThatFits:CGSizeMake(CGRectGetWidth(self.frame), 0)].height;
     }
     
+    if (key) {
+        [self.fd_keyedHeaderFooterHeightCache cacheHeight:fittingHeight byKey:key];
+    }
+    
     return fittingHeight;
+}
+
+- (CGFloat)fd_heightForHeaderFooterViewWithIdentifier:(NSString *)identifier configuration:(void (^)(id))configuration {
+    return [self fd_heightForHeaderFooterViewWithIdentifier:identifier cacheByKey:nil configuration:configuration];
 }
 
 @end
@@ -285,6 +299,18 @@
 
 - (void)setFd_enforceFrameLayout:(BOOL)enforceFrameLayout {
     objc_setAssociatedObject(self, @selector(fd_enforceFrameLayout), @(enforceFrameLayout), OBJC_ASSOCIATION_RETAIN);
+}
+
+@end
+
+@implementation UITableViewHeaderFooterView (FDTemplateLayoutHeaderFooterView)
+
+- (BOOL)fd_isTemplateLayoutHeaderFooterView {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
+}
+
+- (void)setFd_isTemplateLayoutHeaderFooterView:(BOOL)fd_isTemplateLayoutHeaderFooterView {
+    objc_setAssociatedObject(self, @selector(fd_isTemplateLayoutHeaderFooterView), @(fd_isTemplateLayoutHeaderFooterView), OBJC_ASSOCIATION_RETAIN);
 }
 
 @end

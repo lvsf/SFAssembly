@@ -9,7 +9,11 @@
 #import "SFFormSection.h"
 #import "SFFormTableSectionHeaderFooter.h"
 
-@interface SFFormTableSection : SFFormSection
+@interface SFFormTableSection : SFFormSection{
+    @package
+    SFFormTableSectionHeaderFooter *_header;
+    SFFormTableSectionHeaderFooter *_footer;
+}
 @property (nonatomic,strong,readonly) SFFormTableSectionHeaderFooter *header;
 @property (nonatomic,strong,readonly) SFFormTableSectionHeaderFooter *footer;
 @end

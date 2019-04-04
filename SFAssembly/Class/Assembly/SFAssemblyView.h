@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SFAssemblyView : UIView
 @property (nonatomic,strong) UIView *contentView;
 @property (nonatomic,strong) SFAssemblyLayout *layout;
+- (void)setLayoutForHeightCalculate:(SFAssemblyLayout *)layout;
 @end
 
 NS_ASSUME_NONNULL_END

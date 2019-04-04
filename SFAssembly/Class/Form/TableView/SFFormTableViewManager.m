@@ -43,16 +43,32 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     SFFormTableSection *tableViewSection = (SFFormTableSection *)[tableView.form_manager sectionAtIndex:section];
-    NSString *reuseIdentifier = tableViewSection.header.reuseIdentifier?:[SFFormTableViewManager configuration].reuseIdentifierForClassName(tableViewSection.header.className);
-    [tableView form_registerHeaderFooterViewWithClassName:tableViewSection.header.className reuseIdentifier:reuseIdentifier];
-    return [tableView fd_heightForHeaderFooterViewWithIdentifier:reuseIdentifier configuration:^(id headerFooterView) {
-        [headerFooterView setForm_headerFooter:tableViewSection.header];
-        [headerFooterView form_reloadForSection:tableViewSection];
-    }];
+    SFFormSectionHeaderFooter *header = tableViewSection -> _header;
+    if (header) {
+        NSString *reuseIdentifier = header.reuseIdentifier?:[SFFormTableViewManager configuration].reuseIdentifierForClassName(header.className);
+        NSString *cacheKey = header.cacheHeight?[NSString stringWithFormat:@"%p_%@",header,@(CGRectGetWidth(tableView.bounds))]:nil;
+        [tableView form_registerHeaderFooterViewWithClassName:header.className reuseIdentifier:reuseIdentifier];
+        return [tableView fd_heightForHeaderFooterViewWithIdentifier:reuseIdentifier cacheByKey:cacheKey configuration:^(id headerFooterView) {
+            [headerFooterView setForm_headerFooter:header];
+            [headerFooterView form_reloadForSection:tableViewSection];
+        }];
+    }
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return [(SFFormTableSection *)[tableView.form_manager sectionAtIndex:section] footer].layout.size.height;
+    SFFormTableSection *tableViewSection = (SFFormTableSection *)[tableView.form_manager sectionAtIndex:section];
+    SFFormSectionHeaderFooter *footer = tableViewSection -> _footer;
+    if (footer) {
+        NSString *reuseIdentifier = footer.reuseIdentifier?:[SFFormTableViewManager configuration].reuseIdentifierForClassName(footer.className);
+        NSString *cacheKey = footer.cacheHeight?[NSString stringWithFormat:@"%p_%@",footer,@(CGRectGetWidth(tableView.bounds))]:nil;
+        [tableView form_registerHeaderFooterViewWithClassName:footer.className reuseIdentifier:reuseIdentifier];
+        return [tableView fd_heightForHeaderFooterViewWithIdentifier:reuseIdentifier cacheByKey:cacheKey configuration:^(id headerFooterView) {
+            [headerFooterView setForm_headerFooter:footer];
+            [headerFooterView form_reloadForSection:tableViewSection];
+        }];
+    }
+    return 0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -78,7 +94,7 @@
     CGFloat height = item.rowHeight;
     if (height <= 0) {
         if (item.cacheHeight) {
-            NSString *cacheKey = [NSString stringWithFormat:@"%p_%@",item,NSStringFromCGSize(tableView.bounds.size)];
+            NSString *cacheKey = [NSString stringWithFormat:@"%p_%@",item,@(CGRectGetWidth(tableView.bounds))];
             height = [tableView fd_heightForCellWithIdentifier:reuseIdentifier cacheByKey:cacheKey configuration:^(id cell) {
                 [cell setFd_enforceFrameLayout:item.enforceFrameLayout];
                 [cell setForm_item:item];

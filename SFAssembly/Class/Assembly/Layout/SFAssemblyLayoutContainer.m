@@ -16,6 +16,8 @@
         self.heightLayoutMode = SFComponentLayoutModeFit;
         self.width = CGRectGetWidth([UIScreen mainScreen].bounds);
         self.height = CGFLOAT_MAX;
+        self.backgroundColor = [UIColor clearColor];
+        self.containerColor = [UIColor clearColor];
     }
     return self;
 }

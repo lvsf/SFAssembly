@@ -65,33 +65,40 @@
 }
 
 - (CGSize)componentBoundSizeThatFits:(CGSize)size {
-    if (size.width <= 0 || size.height <= 0) {
-        return CGSizeZero;
+    //优先使用指定的值,没有指定值再使用布局时传入的值
+    CGFloat width = self.width?:size.width;
+    CGFloat height = self.height?:size.height;
+    //布局空间大小为0
+    if (width <= 0 || height <= 0) {
+        if (CGRectGetWidth(_customView.bounds) <= 0 || CGRectGetHeight(_customView.bounds) <= 0) {
+            return CGSizeZero;
+        }
+        width = width?:CGRectGetWidth(_customView.bounds);
+        height = height?:CGRectGetHeight(_customView.bounds);
     }
-    //优先使用指定的值
-    CGFloat width = self.width;
-    CGFloat height = self.height;
-    //使用布局传入的值
-    if (width <= 0) {
-        width = size.width;
-    }
-    if (height <= 0) {
-        height = size.height;
-    }
-    if (_component && width > 0 && height > 0) {
-        BOOL widthLayoutFit = self.widthLayoutMode == SFComponentLayoutModeFit || width == CGFLOAT_MAX;
-        BOOL heightLayoutFit = self.heightLayoutMode == SFComponentLayoutModeFit || height == CGFLOAT_MAX;
-        if (widthLayoutFit || heightLayoutFit) {
-            CGSize componentBoundSize = [self.component componentViewBoundSizeThatFits:CGSizeMake(width, height)];
-            if (widthLayoutFit) {
-                width = componentBoundSize.width;
-            }
-            if (heightLayoutFit) {
-                height = componentBoundSize.height;
-            }
+    //是否需要自适应布局
+    BOOL widthLayoutFit = self.widthLayoutMode == SFComponentLayoutModeFit || width == CGFLOAT_MAX;
+    BOOL heightLayoutFit = self.heightLayoutMode == SFComponentLayoutModeFit || height == CGFLOAT_MAX;
+    if (widthLayoutFit || heightLayoutFit) {
+        CGSize componentBoundSize = CGSizeZero;
+        if (_customView) {
+            componentBoundSize = [_customView sizeThatFits:CGSizeMake(width, height)];
+        }
+        else {
+            componentBoundSize = [self.component componentViewBoundSizeThatFits:CGSizeMake(width, height)];
+        }
+        if (widthLayoutFit) {
+            width = componentBoundSize.width;
+        }
+        if (heightLayoutFit) {
+            height = componentBoundSize.height;
         }
     }
     return CGSizeMake(width, height);
+}
+
+- (BOOL)visible {
+    return _component || _customView || (_width > 0 && _height > 0);
 }
 
 SFAssemblyPlaceComponentGetter(SFViewComponent,view)

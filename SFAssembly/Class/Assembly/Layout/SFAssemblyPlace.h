@@ -59,12 +59,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) SFComponentPosition horizontalPosition;
 @property (nonatomic,assign) SFComponentPosition verticalPosition;
 
+@property (nonatomic,strong) UIView *customView;
+
 @property (nonatomic,strong) SFViewComponent *view;
 @property (nonatomic,strong) SFImageViewComponent *imageView;
 @property (nonatomic,strong) SFLabelComponent *label;
 @property (nonatomic,strong) SFButtonComponent *button;
 
 @property (nonatomic,strong,readonly) id<SFAssemblyComponentProtocol> component;
+
+@property (nonatomic,assign,readonly) BOOL visible;
 
 @property (nonatomic,copy) void (^onLoad)(SFAssemblyPlace *place, UIView *view);
 

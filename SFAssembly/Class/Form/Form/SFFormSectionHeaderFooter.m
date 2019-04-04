@@ -11,8 +11,15 @@
 @implementation SFFormSectionHeaderFooter
 @synthesize sectionLayout = _sectionLayout;
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _cacheHeight = NO;
+    }
+    return self;
+}
+
 - (BOOL)shouldLoadHeaderFooter {
-    return (self.layout.places.count > 0 || self.view || self.layout.container.height > 0);
+    return (self.layout.places.count > 0 || self.layout.container.height > 0);
 }
 
 - (SFAssemblyLayout *)layout {
