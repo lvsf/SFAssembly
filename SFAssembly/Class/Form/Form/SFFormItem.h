@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) BOOL verify;
 @property (nonatomic,strong) id object;
 @property (nonatomic,strong) NSIndexPath *indexPath;
+@property (nonatomic,strong) UIColor *backgroundColor;
 @end
 
 NS_ASSUME_NONNULL_END

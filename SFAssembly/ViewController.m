@@ -23,6 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    __weak typeof(self) weak_self = self;
+    
     [SFFormTableViewManager configuration].reuseIdentifierForClassName = ^(NSString * _Nonnull className) {
         return [NSString stringWithFormat:@"%@ID",className];
     };
@@ -34,8 +37,14 @@
     t.delegate = self;
     t.dataSource = self;
     t.form_enable = YES;
+    
+    [t.form_manager addActionForTableViewDidSelectedWithBlock:^(UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath) {
+        NSLog(@"didSelect:%@",indexPath);
+    }];
+    
     for (NSInteger i = 0; i < 25; i++) {
         SFFormAssemblyTableItem *item = [SFFormAssemblyTableItem new];
+
         SFFormTableSection *section = [SFFormTableSection new];
         [section addItem:item];
         
@@ -52,7 +61,7 @@
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
                 
             }]];
-            [self.navigationController presentViewController:alert animated:YES completion:nil];
+            [weak_self.navigationController presentViewController:alert animated:YES completion:nil];
         }];
         [section.header.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
         [section.header.sectionLayout.container setBackgroundColor:[UIColor orangeColor]];
@@ -90,6 +99,7 @@
         layout.content.yyLabel.text = [NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(350)]];
         item.layout = layout;
         item.cacheHeight = YES;
+        item.accessoryType = (i % 2 == 0)?UITableViewCellAccessoryCheckmark:UITableViewCellAccessoryDisclosureIndicator;
         t.form_manager.addSection(section);
         
     }

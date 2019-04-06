@@ -12,6 +12,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        _backgroundColor = [UIColor clearColor];
     }
     return self;
 }

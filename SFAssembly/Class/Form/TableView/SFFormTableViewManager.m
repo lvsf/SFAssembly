@@ -7,6 +7,7 @@
 //
 
 #import "SFFormTableViewManager.h"
+#import "NSObject+SFEvent.h"
 #import "UITableView+SFForm.h"
 #import "UITableViewCell+SFForm.h"
 #import "UITableViewHeaderFooterView+SFForm.h"
@@ -130,16 +131,12 @@
     if (item.rowHeight > 0 && item.enforceFrameLayout) {
         [cell sizeThatFits:CGSizeMake(CGRectGetWidth(tableView.bounds), item.rowHeight)];
     }
-    [self tableView:tableView excuteEvent:_cmd indexPath:indexPath];
+    [self _triggerActionForSelector:_cmd withTableView:tableView indexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self tableView:tableView excuteEvent:_cmd indexPath:indexPath];
-}
-
-- (void)tableView:(UITableView *)tableView excuteEvent:(SEL)event indexPath:(NSIndexPath *)indexPath {
-    SFFormTableItem *item = (SFFormTableItem *)[tableView.form_manager itemAtIndexPath:indexPath];
+    [self _triggerActionForSelector:_cmd withTableView:tableView indexPath:indexPath];
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -147,6 +144,12 @@
 }
 
 #pragma mark - pravite
+- (void)_triggerActionForSelector:(SEL)selector withTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
+    SFFormTableItem *item = (SFFormTableItem *)[tableView.form_manager itemAtIndexPath:indexPath];
+    [item sendActionsForSelectorEvent:selector sender:tableView userInfo:indexPath];
+    [self sendActionsForSelectorEvent:selector sender:tableView userInfo:indexPath];
+}
+
 - (UITableViewHeaderFooterView *)_viewForTableSection:(SFFormTableSection *)section headerFooter:(SFFormSectionHeaderFooter *)sectionHeaderFooter {
     if (sectionHeaderFooter.shouldLoadHeaderFooter) {
         NSString *className = sectionHeaderFooter.className;

@@ -19,24 +19,24 @@
             [(id<SFFormTableViewCellProtocol>)self cellDidLoad:self.form_item];
         }
     }
+    [self _update];
     if ([self respondsToSelector:@selector(cellWillAppear:)]) {
         [(id<SFFormTableViewCellProtocol>)self cellWillAppear:self.form_item];
     }
 }
 
 #pragma mark - pravite
-//- (void)updateCell {
-//    self.accessoryType = self.form_item.accessoryType;
-//    self.selectionStyle = self.form_item.selectionStyle;
-//    self.contentView.backgroundColor = self.form_item.backgroundColor;
-//
-//    if (self.form_item.hiddenSeparator) {
-//        self.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth([UIScreen mainScreen].bounds), 0, 0);
-//    }
-//    else {
-//        self.separatorInset = self.form_item.separatorInset;
-//    }
-//}
+- (void)_update {
+    self.accessoryType = self.form_item.accessoryType;
+    self.selectionStyle = self.form_item.selectionStyle;
+    self.contentView.backgroundColor = self.form_item.backgroundColor;
+    if (self.form_item.hiddenSeparator) {
+        self.separatorInset = UIEdgeInsetsMake(0, CGRectGetWidth([UIScreen mainScreen].bounds), 0, 0);
+    }
+    else {
+        self.separatorInset = self.form_item.separatorInset;
+    }
+}
 
 #pragma mark - set/get
 - (void)setForm_item:(SFFormTableItem *)form_item {
