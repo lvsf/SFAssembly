@@ -107,6 +107,10 @@ SFAssemblyPlaceComponentGetter(SFLabelComponent,label)
 
 SFAssemblyPlaceComponentGetter(SFButtonComponent,button)
 
+SFAssemblyPlaceComponentGetter(SFSwitchComponent, switcher)
+
 SFAssemblyPlaceComponentGetter(SFImageViewComponent,imageView)
+
+SFAssemblyPlaceComponentGetter(SFTextFieldComponent, textField)
 
 @end

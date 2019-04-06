@@ -7,7 +7,6 @@
 //
 
 #import "SFMessageAssemblyLayout.h"
-#import "NSMutableArray+SFAssembly.h"
 
 static inline CGFloat SFCenterYFromRect(CGRect targetRect,CGFloat height) {
     return CGRectGetMinY(targetRect) + (CGRectGetHeight(targetRect) - height) * 0.5;

@@ -75,7 +75,9 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
                 //新建控件
                 if (view == nil) {
                     view = [obj.component.class componentView];
-                    [self.contentView addSubview:view];
+                    if (!forHeightCalculate) {
+                        [self.contentView addSubview:view];
+                    }
                     if ([obj.component respondsToSelector:@selector(componentViewDidLoad:)]) {
                         [obj.component componentViewDidLoad:view];
                     }

@@ -8,6 +8,12 @@
 
 #import "SFViewComponent.h"
 
+@interface UIControl(SFControlComponent)
+- (void)control_addBlockForControlEvents:(UIControlEvents)controlEvents block:(void (^)(id sender))block;
+- (void)control_setBlockForControlEvents:(UIControlEvents)controlEvents block:(void (^)(id sender))block;
+- (BOOL)control_respondToControlEvents:(UIControlEvents)controlEvents;
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SFControlComponent : SFViewComponent

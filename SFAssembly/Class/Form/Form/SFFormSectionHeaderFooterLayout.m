@@ -7,7 +7,6 @@
 //
 
 #import "SFFormSectionHeaderFooterLayout.h"
-#import "NSMutableArray+SFAssembly.h"
 
 @implementation SFFormSectionHeaderFooterLayout
 @synthesize topSeparator = _topSeparator;

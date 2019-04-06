@@ -38,19 +38,46 @@
         SFFormAssemblyTableItem *item = [SFFormAssemblyTableItem new];
         SFFormTableSection *section = [SFFormTableSection new];
         [section addItem:item];
+        
         [section.header.sectionLayout.title.label setText:@"123"];
         [section.header.sectionLayout.title.label setTextColor:[UIColor blueColor]];
         [section.header.sectionLayout.title.label setFont:[UIFont systemFontOfSize:15]];
+
         [section.header.sectionLayout.detail setLeft:15];
         [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"header index:%@ %@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(100)]]];
+        [section.header.sectionLayout.detail.button setBackgroundColor:[UIColor lightGrayColor]];
+        [section.header.sectionLayout.detail.button addActionForControlEvents:UIControlEventTouchUpInside actionBlock:^(SFButtonComponent *actionObject, id sender, id userInfo) {
+            NSLog(@"%@",actionObject.normalStatus.title);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"SFAssembly" message:actionObject.normalStatus.title preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+            }]];
+            [self.navigationController presentViewController:alert animated:YES completion:nil];
+        }];
         [section.header.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
         [section.header.sectionLayout.container setBackgroundColor:[UIColor orangeColor]];
-     
+  
         [section.header.sectionLayout.topSeparator.view setBackgroundColor:[UIColor redColor]];
         [section.header.sectionLayout.topSeparator setHeight:1];
         
+        [section.footer.sectionLayout.title setHorizontalPosition:SFComponentPositionCenter];
+        [section.footer.sectionLayout.container setInsets:UIEdgeInsetsMake(25, 25, 25, 25)];
+        [section.footer.sectionLayout.container setBackgroundColor:[UIColor cyanColor]];
+        [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
+        
         if (i == 0 || i == 5) {
             [section.footer.sectionLayout.title setCustomView:[UISwitch new]];
+        }
+        else if (i == 8 || i == 10) {
+            [section.footer.sectionLayout.title.textField setText:nil];
+            [section.footer.sectionLayout.title.textField setPlaceholder:[NSString stringWithFormat:@"footer index %@",@(i)]];
+            [section.footer.sectionLayout.title.textField addActionForControlEvents:UIControlEventEditingChanged actionBlock:^(SFTextFieldComponent *actionObject, id sender, id userInfo) {
+                NSLog(@"text:%@",actionObject.text);
+            }];
+            [section.footer.sectionLayout.title setHeight:44];
+            [section.footer.sectionLayout.title setHeightLayoutMode:SFComponentLayoutModeFill];
+            [section.footer.sectionLayout.title setWidthLayoutMode:SFComponentLayoutModeFill];
+            [section.footer.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
         }
         else {
             [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
@@ -59,16 +86,12 @@
             [section.footer.sectionLayout.title.label setFont:[UIFont boldSystemFontOfSize:20]];
         }
         
-        [section.footer.sectionLayout.title setHorizontalPosition:SFComponentPositionCenter];
-        [section.footer.sectionLayout.container setInsets:UIEdgeInsetsMake(25, 25, 25, 25)];
-        [section.footer.sectionLayout.container setBackgroundColor:[UIColor cyanColor]];
-        [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
-        
         SFMessageAssemblyLayout *layout = [self layout];
         layout.content.yyLabel.text = [NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(350)]];
         item.layout = layout;
         item.cacheHeight = YES;
         t.form_manager.addSection(section);
+        
     }
     [self.view addSubview:t];
     [t mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,6 +131,7 @@
     layout.address.label.font = [UIFont systemFontOfSize:15];
     layout.address.label.textColor = [UIColor darkGrayColor];
     
+    /*
     layout.follow.button.normalStatus.title = @"关注";
     layout.follow.width = 60;
     layout.follow.height = 40;
@@ -117,6 +141,12 @@
     [layout.follow setOnLoad:^(SFAssemblyPlace * _Nonnull place, UIView * _Nonnull view) {
         view.layer.borderColor = [UIColor blueColor].CGColor;
         view.layer.borderWidth = 2;
+    }];
+     */
+    
+    layout.follow.switcher.on = (arc4random_uniform(20) % 2 == 0);
+    [layout.follow.switcher addActionForControlEvents:UIControlEventValueChanged actionBlock:^(id actionObject, UISwitch *sender, id userInfo) {
+        NSLog(@"switcher on:%@",sender.on?@"YES":@"NO");
     }];
     
     layout.content.top = 15;

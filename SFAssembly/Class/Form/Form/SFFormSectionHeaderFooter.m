@@ -13,7 +13,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _cacheHeight = NO;
+        _cacheHeight = YES;
     }
     return self;
 }

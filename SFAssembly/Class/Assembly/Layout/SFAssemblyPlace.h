@@ -11,6 +11,9 @@
 #import "SFImageViewComponent.h"
 #import "SFLabelComponent.h"
 #import "SFButtonComponent.h"
+#import "SFSwitchComponent.h"
+#import "SFTextFieldComponent.h"
+#import "NSObject+SFEvent.h"
 
 #define SFAssemblyPlaceComponentGetter(class,property) \
 - (class *)property { \
@@ -65,6 +68,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) SFImageViewComponent *imageView;
 @property (nonatomic,strong) SFLabelComponent *label;
 @property (nonatomic,strong) SFButtonComponent *button;
+@property (nonatomic,strong) SFSwitchComponent *switcher;
+@property (nonatomic,strong) SFTextFieldComponent *textField;
 
 @property (nonatomic,strong,readonly) id<SFAssemblyComponentProtocol> component;
 
