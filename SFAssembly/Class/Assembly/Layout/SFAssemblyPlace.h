@@ -54,6 +54,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) CGFloat bottom;
 @property (nonatomic,assign) CGFloat width;
 @property (nonatomic,assign) CGFloat height;
+@property (nonatomic,assign) UIEdgeInsets insets;
 
 @property (nonatomic,assign) NSInteger priority;
 

@@ -10,7 +10,8 @@
 
 @interface SFAssemblyLayout()
 @property (nonatomic,strong) NSMutableArray<SFAssemblyPlace *> *allPlaces;
-@property (nonatomic,assign) CGSize lastLayoutBoundSize;
+@property (nonatomic,assign) CGSize lastLayoutContentSize;
+@property (nonatomic,assign) BOOL needsLayout;
 @end
 
 @implementation SFAssemblyLayout
@@ -18,66 +19,70 @@
 - (instancetype)init {
     if (self = [super init]) {
         _needsLayout = YES;
-        _lastLayoutBoundSize = CGSizeMake(-1, -1);
+        _lastLayoutContentSize = CGSizeMake(-1, -1);
+        _insets = UIEdgeInsetsMake(10, 10, 10, 10);
     }
     return self;
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    return CGSizeZero;
 }
 
 - (void)setNeedsLayout {
     _needsLayout = YES;
 }
 
-- (CGSize)sizeThatFits:(CGSize)size {
-    NSLog(@"[SFAssembly] %@ sizeThatFits",NSStringFromClass(self.class));
-    CGFloat width = size.width;
-    CGFloat height = size.height;
-    CGFloat contentBoundWidth = 0;
-    CGFloat contentBoundHeight = 0;
-    if (width > 0 && height > 0) {
-        contentBoundWidth = width - self.container.insets.left - self.container.insets.right;
-        contentBoundHeight = height - self.container.insets.top - self.container.insets.bottom;
-        if ([self respondsToSelector:@selector(assemblyLayout:sizeThatFits:)]) {
-            CGSize contentBoundSize = [self assemblyLayout:self
-                                              sizeThatFits:CGSizeMake(contentBoundWidth,contentBoundHeight)];
-            BOOL widthLayoutFit = self.container.widthLayoutMode == SFPlaceLayoutModeFit || width == CGFLOAT_MAX;
-            BOOL heightLayoutFit = self.container.heightLayoutMode == SFPlaceLayoutModeFit || height == CGFLOAT_MAX;
-            if (widthLayoutFit) {
-                contentBoundWidth = contentBoundSize.width;
-            }
-            if (heightLayoutFit) {
-                contentBoundHeight = contentBoundSize.height;
-            }
-        }
-    }
-    return CGSizeMake(contentBoundWidth + self.container.insets.left + self.container.insets.right,
-                      contentBoundHeight + self.container.insets.top + self.container.insets.bottom);
-}
-
 - (void)sizeToFitBoundSize:(CGSize)size {
     CGSize boundSize = size;
-    if (self.container.width) {
-        boundSize.width = self.container.width;
+    if (_width) {
+        boundSize.width = _width;
     }
-    if (self.container.height) {
-        boundSize.height = self.container.height;
+    if (_height) {
+        boundSize.height = _height;
     }
-    BOOL needLayout = !CGSizeEqualToSize(_lastLayoutBoundSize, boundSize);
-    if (!needLayout && _needsLayout) {
-        _needsLayout = NO;
-        needLayout = YES;
+    if (boundSize.width > 0 && boundSize.height > 0) {
+        CGFloat contentWidth = boundSize.width - _insets.left - _insets.right;
+        CGFloat contentHeight = boundSize.height - _insets.top - _insets.bottom;
+        CGSize layoutContentSize = CGSizeMake(contentWidth, contentHeight);
+        BOOL needLayout = !CGSizeEqualToSize(_lastLayoutContentSize, layoutContentSize);
+        if (!needLayout && _needsLayout) {
+            _needsLayout = NO;
+            needLayout = YES;
+        }
+        if (needLayout) {
+            CGSize contentSize = [self sizeThatFits:layoutContentSize];
+            BOOL widthLayoutFit = _widthLayoutMode == SFPlaceLayoutModeFit || boundSize.width == CGFLOAT_MAX;
+            BOOL heightLayoutFit = _heightLayoutMode == SFPlaceLayoutModeFit || boundSize.height == CGFLOAT_MAX;
+            if (widthLayoutFit) {
+                contentWidth = contentSize.width;
+            }
+            if (heightLayoutFit) {
+                contentHeight = contentSize.height;
+            }
+            [_allPlaces enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                CGRect frame = obj.frame;
+                frame.origin.x += self.insets.left;
+                frame.origin.y += self.insets.top;
+                obj.frame = frame;
+            }];
+            _size = CGSizeMake(contentWidth + _insets.left + _insets.right,
+                               contentHeight + _insets.top + _insets.bottom);
+            _background.frame = CGRectMake(_background.left,
+                                           _background.top,
+                                           _size.width - _background.left - _background.right,
+                                           _size.height - _background.top - _background.bottom);
+            _lastLayoutContentSize = layoutContentSize;
+        }
     }
-    if (needLayout) {
-        _size = [self sizeThatFits:boundSize];
-        _container.frame = CGRectMake(self.container.insets.left,
-                                      self.container.insets.top,
-                                      _size.width - self.container.insets.left - self.container.insets.right,
-                                      _size.height - self.container.insets.top - self.container.insets.bottom);
+    else {
+        _size = CGSizeMake(_insets.left + _insets.right,_insets.top + _insets.bottom);
+        _background.frame = CGRectZero;
     }
-    _lastLayoutBoundSize = boundSize;
 }
 
 - (void)sizeToFit {
-    [self sizeToFitBoundSize:CGSizeMake(self.container.width, self.container.height)];
+    [self sizeToFitBoundSize:CGSizeMake(self.width, self.height)];
 }
 
 - (void)addPlace:(SFAssemblyPlace *)place {
@@ -101,10 +106,10 @@
     });
 }
 
-- (SFAssemblyLayoutContainer *)background {
-    return _container?:({
-        _container = [SFAssemblyLayoutContainer new];
-        _container;
+- (SFAssemblyPlace *)background {
+    return _background?:({
+        _background = [SFAssemblyPlace new];
+        _background;
     });
 }
 

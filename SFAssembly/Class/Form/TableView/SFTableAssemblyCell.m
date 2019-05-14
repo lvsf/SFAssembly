@@ -47,9 +47,6 @@
         [self.assemblyView setLayout:item.layout];
         [self.assemblyView udpate];
     }
-    else {
-        NSLog(@"fd_isTemplateLayoutCell");
-    }
 }
 
 - (void)layoutSubviews {

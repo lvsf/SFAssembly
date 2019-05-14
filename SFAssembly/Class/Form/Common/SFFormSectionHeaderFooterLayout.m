@@ -13,7 +13,8 @@
 @synthesize title = _title;
 @synthesize detail = _detail;
 
-- (CGSize)assemblyLayout:(SFAssemblyLayout *)layout sizeThatFits:(CGSize)size {
+- (CGSize)sizeThatFits:(CGSize)size {
+    SFFormSectionHeaderFooterLayout *layout = self;
     CGSize boundSize = size;
     if ([layout isMemberOfClass:[SFFormSectionHeaderFooterLayout class]]) {
         SFFormSectionHeaderFooterLayout *easyLayout = (SFFormSectionHeaderFooterLayout *)layout;
@@ -64,7 +65,7 @@
                                                                          contentWidth:layoutWidth];
         }
         
-        if (layoutHeight == CGFLOAT_MAX || layout.container.heightLayoutMode == SFPlaceLayoutModeFit) {
+        if (layoutHeight == CGFLOAT_MAX || layout.heightLayoutMode == SFPlaceLayoutModeFit) {
             layoutHeight = CGRectGetHeight(topSeparatorFrame) + MAX(CGRectGetMaxY(detailFrame), CGRectGetMaxY(titleFrame));
         }
         

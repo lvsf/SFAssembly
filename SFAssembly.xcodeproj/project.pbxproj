@@ -19,7 +19,6 @@
 		174EFA402255F938009D385D /* NSObject+SFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 174EFA3F2255F937009D385D /* NSObject+SFEvent.m */; };
 		1755955B2289673F00AC6638 /* SFTableAssemblySectionHeaderFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1755955A2289673F00AC6638 /* SFTableAssemblySectionHeaderFooter.m */; };
 		176476C72251F3240023EC03 /* SFAssemblyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476AE2251F3240023EC03 /* SFAssemblyView.m */; };
-		176476C82251F3240023EC03 /* SFAssemblyLayoutContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476B62251F3240023EC03 /* SFAssemblyLayoutContainer.m */; };
 		176476C92251F3240023EC03 /* SFAssemblyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476B72251F3240023EC03 /* SFAssemblyLayout.m */; };
 		176476CA2251F3240023EC03 /* SFAssemblyPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476B92251F3240023EC03 /* SFAssemblyPlace.m */; };
 		176476CB2251F3240023EC03 /* SFButtonComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 176476BB2251F3240023EC03 /* SFButtonComponent.m */; };
@@ -102,9 +101,7 @@
 		176476B22251F3240023EC03 /* SFLabelComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFLabelComponent.h; sourceTree = "<group>"; };
 		176476B32251F3240023EC03 /* SFImageViewComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageViewComponent.h; sourceTree = "<group>"; };
 		176476B52251F3240023EC03 /* SFAssemblyPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyPlace.h; sourceTree = "<group>"; };
-		176476B62251F3240023EC03 /* SFAssemblyLayoutContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyLayoutContainer.m; sourceTree = "<group>"; };
 		176476B72251F3240023EC03 /* SFAssemblyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyLayout.m; sourceTree = "<group>"; };
-		176476B82251F3240023EC03 /* SFAssemblyLayoutContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyLayoutContainer.h; sourceTree = "<group>"; };
 		176476B92251F3240023EC03 /* SFAssemblyPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyPlace.m; sourceTree = "<group>"; };
 		176476BA2251F3240023EC03 /* SFAssemblyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAssemblyLayout.h; sourceTree = "<group>"; };
 		176476BB2251F3240023EC03 /* SFButtonComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFButtonComponent.m; sourceTree = "<group>"; };
@@ -267,8 +264,6 @@
 				174B878C2259F07400540935 /* SFAssemblyFormLayout.m */,
 				176476BA2251F3240023EC03 /* SFAssemblyLayout.h */,
 				176476B72251F3240023EC03 /* SFAssemblyLayout.m */,
-				176476B82251F3240023EC03 /* SFAssemblyLayoutContainer.h */,
-				176476B62251F3240023EC03 /* SFAssemblyLayoutContainer.m */,
 				176476B52251F3240023EC03 /* SFAssemblyPlace.h */,
 				176476B92251F3240023EC03 /* SFAssemblyPlace.m */,
 			);
@@ -595,7 +590,6 @@
 				17705E4C22534F1F000C5E1E /* TableViewCell.m in Sources */,
 				176476F1225206A70023EC03 /* SFTableItem.m in Sources */,
 				174B87872259422000540935 /* SFScrollViewComponent.m in Sources */,
-				176476C82251F3240023EC03 /* SFAssemblyLayoutContainer.m in Sources */,
 				174EFA402255F938009D385D /* NSObject+SFEvent.m in Sources */,
 				174D355722571F4D0081F0BB /* SFSwitchComponent.m in Sources */,
 				17B325C621F563640009FE48 /* ViewController.m in Sources */,

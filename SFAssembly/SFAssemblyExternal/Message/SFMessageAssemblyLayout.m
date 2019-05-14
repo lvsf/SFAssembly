@@ -18,7 +18,8 @@ static inline CGFloat SFCenterYFromRect(CGRect targetRect,CGFloat height) {
 
 @implementation SFMessageAssemblyLayout
 
-- (CGSize)assemblyLayout:(nonnull SFMessageAssemblyLayout *)layout sizeThatFits:(CGSize)size {
+- (CGSize)sizeThatFits:(CGSize)size {
+    SFMessageAssemblyLayout *layout = self;
     layout.title.frame = (CGRect){CGPointZero,[layout.title componentBoundSizeThatFits:size]};
     layout.avatar.frame = (CGRect){0,CGRectGetMaxY(layout.title.frame) + layout.avatar.top,[layout.avatar componentBoundSizeThatFits:size]};
     

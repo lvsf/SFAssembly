@@ -19,7 +19,7 @@
 }
 
 - (BOOL)shouldLoadHeaderFooter {
-    return (self.layout.places.count > 0 || self.layout.container.height > 0);
+    return (self.layout.places.count > 0 || self.layout.height > 0);
 }
 
 - (SFAssemblyLayout *)layout {

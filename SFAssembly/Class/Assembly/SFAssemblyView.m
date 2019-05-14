@@ -15,105 +15,105 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 };
 
 @interface SFAssemblyLayoutManager()
-@property (nonatomic,weak) SFAssemblyLayout *lastUpdateLayout;
 @property (nonatomic,strong) NSMutableDictionary <NSString *,NSMutableArray *> *reusableComponentViews;
 @property (nonatomic,strong) NSMutableDictionary <NSString *,NSMutableArray *> *visibleReusableComponentViews;
 @property (nonatomic,strong) NSMutableArray <UIView *> *visibleCustomViews;
+- (void)updateLayoutForRender;
 @end
 
 @implementation SFAssemblyLayoutManager
 
 - (CGSize)sizeThatFits:(CGSize)size {
+    [self _updateLayoutForRender:NO];
     [self.layout sizeToFitBoundSize:size];
     return self.layout.size;
 }
 
-- (void)_updateLayout {
+- (void)updateLayoutForRender {
+    [self _updateLayoutForRender:YES];
+}
+
+- (void)_updateLayoutForRender:(BOOL)render {
     NSLog(@"[SFAssembly] SFAssemblyLayoutManager _updateLayout");
-    BOOL needReloadComponentView = (!_lastUpdateLayout || ![_lastUpdateLayout.identifier isEqualToString:self.layout.identifier]);
-    if (needReloadComponentView) {
-        NSMutableDictionary *visibleReusableComponentViews = [NSMutableDictionary new];
+    NSMutableArray<SFAssemblyPlace *> *places = [NSMutableArray arrayWithArray:self.layout.places];
+    if (render) {
+        if (self.layout.background.visible) {
+            [places addObject:self.layout.background];
+        }
         [self.visibleCustomViews enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [obj removeFromSuperview];
         }];
         [self.visibleCustomViews removeAllObjects];
-        [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull place, NSUInteger idx, BOOL * _Nonnull stop) {
-            id <SFAssemblyComponentProtocol> component = place.component;
-            if (place.visible) {
-                if (place.customView) {
-                    [self.visibleCustomViews addObject:place.customView];
+    }
+    NSMutableDictionary *visibleReusableComponentViews = [NSMutableDictionary new];
+    [places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull place, NSUInteger idx, BOOL * _Nonnull stop) {
+        id <SFAssemblyComponentProtocol> component = place.component;
+        if (place.visible) {
+            if (place.customView) {
+                [self.visibleCustomViews addObject:place.customView];
+            }
+            else if (component) {
+                //从当前显示的控件中取可重用的控件
+                UIView *view = [self _dequeueVisibleReusableViewWithComponent:component];
+                //从重用池中取可重用的控件
+                if (view == nil) {
+                    view = [self _dequeueReusableViewWithComponent:component];
                 }
-                else if (component) {
-                    //从当前显示的控件中取可重用的控件
-                    UIView *view = [self _dequeueVisibleReusableViewWithComponent:component];
-                    //从重用池中取可重用的控件
-                    if (view == nil) {
-                        view = [self _dequeueReusableViewWithComponent:component];
+                //新建控件
+                if (view == nil) {
+                    view = [component.class componentView];
+                    if ([component respondsToSelector:@selector(componentViewDidLoad:)]) {
+                        [component componentViewDidLoad:view];
                     }
-                    //新建控件
-                    if (view == nil) {
-                        view = [component.class componentView];
-                        if ([component respondsToSelector:@selector(componentViewDidLoad:)]) {
-                            [component componentViewDidLoad:view];
-                        }
-                    }
-                    if ([component respondsToSelector:@selector(componentViewWillAppear:)]) {
-                        [component componentViewWillAppear:view];
-                    }
-                    view.component = component;
-                    view.component.view = view;
-                    //加入当前显示控件列表
-                    NSString *key = SFReusableKeyForComponent(component);
-                    NSMutableArray *visibleReusableViews = visibleReusableComponentViews[key];
-                    if (visibleReusableViews == nil) {
-                        visibleReusableViews = [NSMutableArray new];
-                        visibleReusableComponentViews[key] = visibleReusableViews;
-                    }
-                    [visibleReusableViews addObject:view];
                 }
-                else {
-                    //空视图
+                if ([component respondsToSelector:@selector(componentViewWillAppear:)]) {
+                    [component componentViewWillAppear:view];
                 }
+                view.component = component;
+                view.component.view = view;
+                //加入当前显示控件列表
+                NSString *key = SFReusableKeyForComponent(component);
+                NSMutableArray *visibleReusableViews = visibleReusableComponentViews[key];
+                if (visibleReusableViews == nil) {
+                    visibleReusableViews = [NSMutableArray new];
+                    visibleReusableComponentViews[key] = visibleReusableViews;
+                }
+                [visibleReusableViews addObject:view];
             }
             else {
-                //不显示
+                //空视图
             }
+        }
+        else {
+            //不显示
+        }
+    }];
+    //将当前显示未被重用的控件移入可重用的控件中
+    [self.visibleReusableComponentViews enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSMutableArray * _Nonnull componentViews, BOOL * _Nonnull stop) {
+        [componentViews enumerateObjectsUsingBlock:^(UIView * _Nonnull componentView, NSUInteger idx, BOOL * _Nonnull stop) {
+            //componentView.component.view 可能为nil
+            [self _pushVisibleReusableComponentViewToReusableView:componentView forKey:key];
         }];
-        //将当前显示未被重用的控件移入可重用的控件中
-        [self.visibleReusableComponentViews enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSMutableArray * _Nonnull componentViews, BOOL * _Nonnull stop) {
-            [componentViews enumerateObjectsUsingBlock:^(UIView * _Nonnull componentView, NSUInteger idx, BOOL * _Nonnull stop) {
-                //componentView.component.view 可能为nil
-                //移出当前
-                [componentView removeFromSuperview];
-                //添加重用
-                NSMutableArray *reusableViews = self.reusableComponentViews[key];
-                if (reusableViews == nil) {
-                    reusableViews = [NSMutableArray new];
-                    self.reusableComponentViews[key] = reusableViews;
-                }
-                [reusableViews addObject:componentView];
-                componentView.component.view = nil;
-                componentView.component = nil;
-            }];
-            [componentViews removeAllObjects];
-        }];
-        //更新当前显示的控件列表
-        [self setVisibleReusableComponentViews:visibleReusableComponentViews];
-    }
-    else {
-        [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull place, NSUInteger idx, BOOL * _Nonnull stop) {
-            id <SFAssemblyComponentProtocol> component = place.component;
-            if (component.view && [component respondsToSelector:@selector(componentViewWillAppear:)]) {
-                [component componentViewWillAppear:component.view];
-            }
-        }];
-    }
-    _lastUpdateLayout = self.layout;
+        [componentViews removeAllObjects];
+    }];
+    //更新当前显示的控件列表
+    [self setVisibleReusableComponentViews:visibleReusableComponentViews];
 }
 
-- (void)setLayout:(SFAssemblyLayout *)layout {
-    _layout = layout;
-    [self _updateLayout];
+- (void)_pushVisibleReusableComponentViewToReusableView:(UIView *)componentView forKey:(NSString *)key {
+    if (componentView && key) {
+        //移出当前
+        [componentView removeFromSuperview];
+        //添加重用
+        NSMutableArray *reusableViews = self.reusableComponentViews[key];
+        if (reusableViews == nil) {
+            reusableViews = [NSMutableArray new];
+            self.reusableComponentViews[key] = reusableViews;
+        }
+        [reusableViews addObject:componentView];
+        componentView.component.view = nil;
+        componentView.component = nil;
+    }
 }
 
 - (UIView *)_dequeueReusableViewWithComponent:(id<SFAssemblyComponentProtocol>)component {
@@ -162,16 +162,15 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 @implementation SFAssemblyView
 
 - (void)udpate {
+    [self.layoutManager updateLayoutForRender];
     [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([self isEqual:obj.renderView.superview] == NO) {
             [self addSubview:obj.renderView];
         }
     }];
     [self setNeedsLayout];
-}
-
-- (CGSize)sizeThatFits:(CGSize)size {
-    return [self.layoutManager sizeThatFits:size];
+    [self addSubview:self.layout.background.renderView];
+    [self sendSubviewToBack:self.layout.background.renderView];
 }
 
 - (void)layoutSubviews {
@@ -179,6 +178,11 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
     [self.layout.places enumerateObjectsUsingBlock:^(SFAssemblyPlace * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj.renderView setFrame:obj.frame];
     }];
+    [self.layout.background.renderView setFrame:self.layout.background.frame];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    return [self.layoutManager sizeThatFits:size];
 }
 
 #pragma mark - set/get

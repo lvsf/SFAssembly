@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SFAssemblyLayoutContainer.h"
+#import <UIKit/UIKit.h>
+#import "SFAssemblyPlace.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -34,22 +35,22 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol SFAssemblyLayoutProtocol <NSObject>
 @required
 - (NSArray<SFAssemblyPlace *> *)places;
-- (CGSize)assemblyLayout:(SFAssemblyLayout *)layout sizeThatFits:(CGSize)size;
+- (CGSize)sizeThatFits:(CGSize)size;
 @end
 
 @interface SFAssemblyLayout : NSObject<SFAssemblyLayoutProtocol>
-@property (nonatomic,copy) NSString *identifier;
-@property (nonatomic,strong) SFAssemblyLayoutContainer *container;
-@property (nonatomic,assign,readonly) BOOL needsLayout;
+@property (nonatomic,assign) UIEdgeInsets insets;
+@property (nonatomic,assign) CGFloat width;
+@property (nonatomic,assign) CGFloat height;
+@property (nonatomic,assign) SFPlaceLayoutMode widthLayoutMode;
+@property (nonatomic,assign) SFPlaceLayoutMode heightLayoutMode;
+@property (nonatomic,strong) SFAssemblyPlace *background;
 @property (nonatomic,assign,readonly) CGSize size;
-
-@property (nonatomic,copy) void (^onReload)(id<SFAssemblyLayoutProtocol> layout);
 
 - (void)addPlace:(SFAssemblyPlace *)place;
 - (void)setNeedsLayout;
 - (void)sizeToFit;
 - (void)sizeToFitBoundSize:(CGSize)size;
-- (CGSize)sizeThatFits:(CGSize)size;
 
 @end
 

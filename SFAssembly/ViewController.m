@@ -78,16 +78,15 @@
                 }]];
                 [weak_self.navigationController presentViewController:alert animated:YES completion:nil];
             }];
-            [section.assemblyHeader.easyLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
-            [section.assemblyHeader.easyLayout.container setBackgroundColor:[UIColor orangeColor]];
+            [section.assemblyHeader.easyLayout.background setInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+            [section.assemblyHeader.easyLayout.background.view setBackgroundColor:[UIColor orangeColor]];
             
             [section.assemblyHeader.easyLayout.topSeparator.view setBackgroundColor:[UIColor redColor]];
             [section.assemblyHeader.easyLayout.topSeparator setHeight:1];
             
             [section.assemblyFooter.easyLayout.title setHorizontalPosition:SFPlacePositionCenter];
-            [section.assemblyFooter.easyLayout.container setInsets:UIEdgeInsetsMake(25, 25, 25, 25)];
-            [section.assemblyFooter.easyLayout.container setBackgroundColor:[UIColor cyanColor]];
-            [section.assemblyFooter.easyLayout.container setContainerColor:[UIColor greenColor]];
+            [section.assemblyFooter.easyLayout.background setInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+            [section.assemblyFooter.easyLayout.background.view setBackgroundColor:[UIColor cyanColor]];
             
             
             if (i == 0 || i == 5) {
@@ -105,10 +104,10 @@
                 [section.assemblyFooter.easyLayout.title setHeight:44];
                 [section.assemblyFooter.easyLayout.title setHeightLayoutMode:SFPlaceLayoutModeFill];
                 [section.assemblyFooter.easyLayout.title setWidthLayoutMode:SFPlaceLayoutModeFill];
-                [section.assemblyFooter.easyLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+                [section.assemblyFooter.easyLayout.background setInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
             }
             else {
-                [section.assemblyFooter.easyLayout.container setContainerColor:[UIColor greenColor]];
+                [section.assemblyFooter.easyLayout.background.view setBackgroundColor:[UIColor greenColor]];
                 [section.assemblyFooter.easyLayout.title.label setText:[NSString stringWithFormat:@"footer - index:[%@]",@(i)]];
                 [section.assemblyFooter.easyLayout.title.label setTextColor:[UIColor blueColor]];
                 [section.assemblyFooter.easyLayout.title.label setFont:[UIFont boldSystemFontOfSize:20]];
@@ -186,7 +185,7 @@
     layout.content.yyLabel.numberOfLines = 0;
     layout.content.yyLabel.backgroundColor = [UIColor whiteColor];
     
-    layout.container.insets = UIEdgeInsetsMake(15, 15, 15, 15);
+    layout.background.insets = UIEdgeInsetsMake(15, 15, 15, 15);
     return layout;
 }
 

@@ -97,6 +97,34 @@
     return CGSizeMake(width, height);
 }
 
+- (void)setTop:(CGFloat)top {
+    _top = top;
+    _insets.top = top;
+}
+
+- (void)setLeft:(CGFloat)left {
+    _left = left;
+    _insets.left = left;
+}
+
+- (void)setBottom:(CGFloat)bottom {
+    _bottom = bottom;
+    _insets.bottom = bottom;
+}
+
+- (void)setRight:(CGFloat)right {
+    _right = right;
+    _insets.right = right;
+}
+
+- (void)setInsets:(UIEdgeInsets)insets {
+    _insets = insets;
+    _top = insets.top;
+    _left = insets.left;
+    _bottom = insets.bottom;
+    _right = insets.right;
+}
+
 - (BOOL)visible {
     return (_component && [_component componentViewShouldDisplay]) || (_width > 0 && _height > 0) || _customView;
 }
