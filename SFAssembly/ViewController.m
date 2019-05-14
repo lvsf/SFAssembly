@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "SFMessageAssemblyLayout.h"
 #import "SFAssemblyView.h"
-#import "SFFormAssemblyTableItem.h"
+#import "SFTableAssemblyItem.h"
 #import "UITableView+SFForm.h"
 #import "NSString+HHAdd.h"
 #import "YYFPSLabel.h"
@@ -17,19 +17,31 @@
 
 @interface ViewController ()<UITableViewDelegate,UIScrollViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) YYFPSLabel *fpsLabel;
+@property (nonatomic,strong) UITableView *t;
 @end
 
 @implementation ViewController
 
+- (void)_gun {
+    for (NSInteger i = 0; i < 200; i++) {
+        [self.t setContentOffset:CGPointZero animated:YES];
+
+        [self.t setContentOffset:CGPointMake(0, self.t.contentSize.height - self.view.bounds.size.height) animated:YES];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithTitle:@"滚" style:UIBarButtonItemStyleDone target:self action:@selector(_gun)];
+    [self.navigationItem setRightBarButtonItem:b];
+    
     __weak typeof(self) weak_self = self;
     
-    [SFFormTableViewManager configuration].reuseIdentifierForClassName = ^(NSString * _Nonnull className) {
+    [SFTableViewManager configuration].reuseIdentifierForClassName = ^(NSString * _Nonnull className) {
         return [NSString stringWithFormat:@"%@ID",className];
     };
-    UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(10, 25, 255, 500) style:UITableViewStyleGrouped];
+    UITableView *t = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     t.backgroundColor = [UIColor whiteColor];
     t.estimatedRowHeight = 0;
     t.estimatedSectionFooterHeight = 0;
@@ -38,63 +50,71 @@
     t.dataSource = self;
     t.form_enable = YES;
     
+    self.t = t;
+    
     [t.form_manager addActionForTableViewDidSelectedWithBlock:^(UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath) {
         NSLog(@"didSelect:%@",indexPath);
     }];
     
-    for (NSInteger i = 0; i < 25; i++) {
-        SFFormAssemblyTableItem *item = [SFFormAssemblyTableItem new];
+    for (NSInteger i = 0; i < 30; i++) {
+        SFTableAssemblyItem *item = [SFTableAssemblyItem new];
 
-        SFFormTableSection *section = [SFFormTableSection new];
+        SFTableSection *section = [SFTableSection new];
         [section addItem:item];
         
-        [section.header.sectionLayout.title.label setText:@"123"];
-        [section.header.sectionLayout.title.label setTextColor:[UIColor blueColor]];
-        [section.header.sectionLayout.title.label setFont:[UIFont systemFontOfSize:15]];
-
-        [section.header.sectionLayout.detail setLeft:15];
-        [section.header.sectionLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"header index:%@ %@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(100)]]];
-        [section.header.sectionLayout.detail.button setBackgroundColor:[UIColor lightGrayColor]];
-        [section.header.sectionLayout.detail.button addActionForControlEvents:UIControlEventTouchUpInside actionBlock:^(SFButtonComponent *actionObject, id sender, id userInfo) {
-            NSLog(@"%@",actionObject.normalStatus.title);
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"SFAssembly" message:actionObject.normalStatus.title preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                
-            }]];
-            [weak_self.navigationController presentViewController:alert animated:YES completion:nil];
-        }];
-        [section.header.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
-        [section.header.sectionLayout.container setBackgroundColor:[UIColor orangeColor]];
-  
-        [section.header.sectionLayout.topSeparator.view setBackgroundColor:[UIColor redColor]];
-        [section.header.sectionLayout.topSeparator setHeight:1];
-        
-        [section.footer.sectionLayout.title setHorizontalPosition:SFComponentPositionCenter];
-        [section.footer.sectionLayout.container setInsets:UIEdgeInsetsMake(25, 25, 25, 25)];
-        [section.footer.sectionLayout.container setBackgroundColor:[UIColor cyanColor]];
-        [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
-        
-        if (i == 0 || i == 5) {
-            [section.footer.sectionLayout.title setCustomView:[UISwitch new]];
-        }
-        else if (i == 8 || i == 10) {
-            [section.footer.sectionLayout.title.textField setText:nil];
-            [section.footer.sectionLayout.title.textField setPlaceholder:[NSString stringWithFormat:@"footer index %@",@(i)]];
-            [section.footer.sectionLayout.title.textField addActionForControlEvents:UIControlEventEditingChanged actionBlock:^(SFTextFieldComponent *actionObject, id sender, id userInfo) {
-                NSLog(@"text:%@",actionObject.text);
+        BOOL show_h_f = YES;
+        if (show_h_f) {
+            section.assemblyHeader.easyLayout.title.label
+            .sText(@"123").sTextColor([UIColor blueColor]).sFont([UIFont systemFontOfSize:15]);
+            
+            [section.assemblyHeader.easyLayout.detail setLeft:15];
+            [section.assemblyHeader.easyLayout.detail.button.normalStatus setTitle:[NSString stringWithFormat:@"header index:%@ %@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(100)]]];
+            [section.assemblyHeader.easyLayout.detail.button setBackgroundColor:[UIColor lightGrayColor]];
+            [section.assemblyHeader.easyLayout.detail.button addActionForControlEvents:UIControlEventTouchUpInside actionBlock:^(SFButtonComponent *actionObject, id sender, id userInfo) {
+                NSLog(@"%@",actionObject.normalStatus.title);
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"SFAssembly" message:actionObject.normalStatus.title preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+                [weak_self.navigationController presentViewController:alert animated:YES completion:nil];
             }];
-            [section.footer.sectionLayout.title setHeight:44];
-            [section.footer.sectionLayout.title setHeightLayoutMode:SFComponentLayoutModeFill];
-            [section.footer.sectionLayout.title setWidthLayoutMode:SFComponentLayoutModeFill];
-            [section.footer.sectionLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [section.assemblyHeader.easyLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            [section.assemblyHeader.easyLayout.container setBackgroundColor:[UIColor orangeColor]];
+            
+            [section.assemblyHeader.easyLayout.topSeparator.view setBackgroundColor:[UIColor redColor]];
+            [section.assemblyHeader.easyLayout.topSeparator setHeight:1];
+            
+            [section.assemblyFooter.easyLayout.title setHorizontalPosition:SFPlacePositionCenter];
+            [section.assemblyFooter.easyLayout.container setInsets:UIEdgeInsetsMake(25, 25, 25, 25)];
+            [section.assemblyFooter.easyLayout.container setBackgroundColor:[UIColor cyanColor]];
+            [section.assemblyFooter.easyLayout.container setContainerColor:[UIColor greenColor]];
+            
+            
+            if (i == 0 || i == 5) {
+                //[item setRowHeight:250];
+            }
+            else if (i == 6 || i == 7) {
+                [section.assemblyFooter.easyLayout.title setCustomView:[UISwitch new]];
+            }
+            else if (i == 8 || i == 10) {
+                [section.assemblyFooter.easyLayout.title.textField setText:nil];
+                [section.assemblyFooter.easyLayout.title.textField setPlaceholder:[NSString stringWithFormat:@"footer index %@",@(i)]];
+                [section.assemblyFooter.easyLayout.title.textField addActionForControlEvents:UIControlEventEditingChanged actionBlock:^(SFTextFieldComponent *actionObject, id sender, id userInfo) {
+                    NSLog(@"text:%@",actionObject.text);
+                }];
+                [section.assemblyFooter.easyLayout.title setHeight:44];
+                [section.assemblyFooter.easyLayout.title setHeightLayoutMode:SFPlaceLayoutModeFill];
+                [section.assemblyFooter.easyLayout.title setWidthLayoutMode:SFPlaceLayoutModeFill];
+                [section.assemblyFooter.easyLayout.container setInsets:UIEdgeInsetsMake(15, 15, 15, 15)];
+            }
+            else {
+                [section.assemblyFooter.easyLayout.container setContainerColor:[UIColor greenColor]];
+                [section.assemblyFooter.easyLayout.title.label setText:[NSString stringWithFormat:@"footer - index:[%@]",@(i)]];
+                [section.assemblyFooter.easyLayout.title.label setTextColor:[UIColor blueColor]];
+                [section.assemblyFooter.easyLayout.title.label setFont:[UIFont boldSystemFontOfSize:20]];
+            }
         }
-        else {
-            [section.footer.sectionLayout.container setContainerColor:[UIColor greenColor]];
-            [section.footer.sectionLayout.title.label setText:[NSString stringWithFormat:@"footer index:%@",@(i)]];
-            [section.footer.sectionLayout.title.label setTextColor:[UIColor blueColor]];
-            [section.footer.sectionLayout.title.label setFont:[UIFont boldSystemFontOfSize:20]];
-        }
-        
+         
         SFMessageAssemblyLayout *layout = [self layout];
         layout.content.yyLabel.text = [NSString stringWithFormat:@"%@:%@",@(i),[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(350)]];
         item.layout = layout;
@@ -113,6 +133,7 @@
 
 - (SFMessageAssemblyLayout *)layout {
     SFMessageAssemblyLayout *layout = [SFMessageAssemblyLayout new];
+    //layout.identifier = @"message";
     layout.avatar.imageView.backgroundColor = [UIColor redColor];
     layout.avatar.imageView.image = [UIImage imageNamed:@"quanyou"];
     layout.avatar.width = 40;

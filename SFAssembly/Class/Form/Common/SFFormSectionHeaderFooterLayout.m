@@ -16,10 +16,10 @@
 - (CGSize)assemblyLayout:(SFAssemblyLayout *)layout sizeThatFits:(CGSize)size {
     CGSize boundSize = size;
     if ([layout isMemberOfClass:[SFFormSectionHeaderFooterLayout class]]) {
-        SFFormSectionHeaderFooterLayout *sectionLayout = (SFFormSectionHeaderFooterLayout *)layout;
+        SFFormSectionHeaderFooterLayout *easyLayout = (SFFormSectionHeaderFooterLayout *)layout;
         CGRect topSeparatorFrame = CGRectZero;
-        if (sectionLayout.topSeparator.visible) {
-            topSeparatorFrame.size = [sectionLayout.topSeparator componentBoundSizeThatFits:CGSizeMake(boundSize.width,sectionLayout.topSeparator.height)];
+        if (easyLayout.topSeparator.visible) {
+            topSeparatorFrame.size = [easyLayout.topSeparator componentBoundSizeThatFits:CGSizeMake(boundSize.width,easyLayout.topSeparator.height)];
         }
         CGFloat layoutHeight = size.height - CGRectGetHeight(topSeparatorFrame);
         CGFloat layoutWidth = size.width;
@@ -27,53 +27,53 @@
         CGRect detailFrame = CGRectMake(0, 0, 0, 0);
         CGRect titleFrame = CGRectMake(0, 0, 0, 0);
         
-        if (sectionLayout.title.priority >= sectionLayout.detail.priority) {
-            if (sectionLayout.title.visible) {
-                titleFrame.size = [sectionLayout.title componentBoundSizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
+        if (easyLayout.title.priority >= easyLayout.detail.priority) {
+            if (easyLayout.title.visible) {
+                titleFrame.size = [easyLayout.title componentBoundSizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
             }
-            titleFrame.origin.x = [sectionLayout.title componentXWithComponentWidth:titleFrame.size.width
+            titleFrame.origin.x = [easyLayout.title componentXWithComponentWidth:titleFrame.size.width
                                                                            contentX:0
                                                                        contentWidth:layoutWidth];
             layoutWidth -= CGRectGetMaxX(titleFrame);
             
-            CGFloat detaiLeft = CGRectGetWidth(titleFrame)?sectionLayout.detail.left:0;
-            if (sectionLayout.detail.visible) {
+            CGFloat detaiLeft = CGRectGetWidth(titleFrame)?easyLayout.detail.left:0;
+            if (easyLayout.detail.visible) {
                 layoutWidth -= detaiLeft;
-                detailFrame.size = [sectionLayout.detail componentBoundSizeThatFits:CGSizeMake(layoutWidth,layoutHeight)];
+                detailFrame.size = [easyLayout.detail componentBoundSizeThatFits:CGSizeMake(layoutWidth,layoutHeight)];
             }
-            detailFrame.origin.x = [sectionLayout.detail componentXWithComponentWidth:detailFrame.size.width
+            detailFrame.origin.x = [easyLayout.detail componentXWithComponentWidth:detailFrame.size.width
                                                                              contentX:CGRectGetMaxX(titleFrame) + detaiLeft
                                                                          contentWidth:layoutWidth];
         }
         else {
-            if (sectionLayout.detail.visible) {
-                detailFrame.size = [sectionLayout.detail componentBoundSizeThatFits:CGSizeMake(layoutWidth,layoutHeight)];
+            if (easyLayout.detail.visible) {
+                detailFrame.size = [easyLayout.detail componentBoundSizeThatFits:CGSizeMake(layoutWidth,layoutHeight)];
             }
             layoutWidth -= CGRectGetWidth(detailFrame);
             
-            CGFloat titleRight = CGRectGetWidth(detailFrame)?sectionLayout.detail.left:0;
-            if (sectionLayout.title.visible) {
+            CGFloat titleRight = CGRectGetWidth(detailFrame)?easyLayout.detail.left:0;
+            if (easyLayout.title.visible) {
                 layoutWidth -= titleRight;
-                titleFrame.size = [sectionLayout.title componentBoundSizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
+                titleFrame.size = [easyLayout.title componentBoundSizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
             }
-            titleFrame.origin.x = [sectionLayout.title componentXWithComponentWidth:titleFrame.size.width
+            titleFrame.origin.x = [easyLayout.title componentXWithComponentWidth:titleFrame.size.width
                                                                            contentX:0
                                                                        contentWidth:layoutWidth];
-            detailFrame.origin.x = [sectionLayout.detail componentXWithComponentWidth:detailFrame.size.width
+            detailFrame.origin.x = [easyLayout.detail componentXWithComponentWidth:detailFrame.size.width
                                                                              contentX:CGRectGetMaxX(titleFrame) +titleRight
                                                                          contentWidth:layoutWidth];
         }
         
-        if (layoutHeight == CGFLOAT_MAX || layout.container.heightLayoutMode == SFComponentLayoutModeFit) {
+        if (layoutHeight == CGFLOAT_MAX || layout.container.heightLayoutMode == SFPlaceLayoutModeFit) {
             layoutHeight = CGRectGetHeight(topSeparatorFrame) + MAX(CGRectGetMaxY(detailFrame), CGRectGetMaxY(titleFrame));
         }
         
-        titleFrame.origin.y = [sectionLayout.title componentYWithComponentHeight:titleFrame.size.height contentY:CGRectGetMaxY(topSeparatorFrame) contentHeight:layoutHeight];
-        detailFrame.origin.y = [sectionLayout.title componentYWithComponentHeight:detailFrame.size.height contentY:CGRectGetMaxY(topSeparatorFrame) contentHeight:layoutHeight];
+        titleFrame.origin.y = [easyLayout.title componentYWithComponentHeight:titleFrame.size.height contentY:CGRectGetMaxY(topSeparatorFrame) contentHeight:layoutHeight];
+        detailFrame.origin.y = [easyLayout.title componentYWithComponentHeight:detailFrame.size.height contentY:CGRectGetMaxY(topSeparatorFrame) contentHeight:layoutHeight];
         
-        sectionLayout.title.frame = titleFrame;
-        sectionLayout.detail.frame = detailFrame;
-        sectionLayout.topSeparator.frame = topSeparatorFrame;
+        easyLayout.title.frame = titleFrame;
+        easyLayout.detail.frame = detailFrame;
+        easyLayout.topSeparator.frame = topSeparatorFrame;
         
         boundSize.width = size.width;
         boundSize.height = layoutHeight;
@@ -85,17 +85,17 @@
 }
 
 SFAssemblyLayoutPlaceGetterWithConfiguration(SFAssemblyPlace, topSeparator, ({
-    _topSeparator.heightLayoutMode = SFComponentLayoutModeFill;
+    _topSeparator.heightLayoutMode = SFPlaceLayoutModeFill;
 }))
 
 SFAssemblyLayoutPlaceGetterWithConfiguration(SFAssemblyPlace, title, ({
     _title.priority = SFAssemblyPlacePriorityHigh;
-    _title.verticalPosition = SFComponentPositionHeader;
+    _title.verticalPosition = SFPlacePositionHeader;
 }))
 
 SFAssemblyLayoutPlaceGetterWithConfiguration(SFAssemblyPlace, detail, ({
     _detail.priority = SFAssemblyPlacePriorityLow;
-    _detail.horizontalPosition = SFComponentPositionFooter;
+    _detail.horizontalPosition = SFPlacePositionFooter;
 }))
 
 @end

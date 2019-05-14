@@ -15,11 +15,11 @@
     
 }
 
-- (void)cellDidLoad:(SFFormTableItem *)item {
+- (void)cellDidLoad:(SFTableItem *)item {
     [self.contentView addSubview:self.contentLabel];
 }
 
-- (void)cellWillAppear:(SFFormTableItem *)item {
+- (void)cellWillAppear:(SFTableItem *)item {
     [self.contentLabel setAttributedText:item.object];
 }
 

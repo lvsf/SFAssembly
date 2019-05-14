@@ -112,7 +112,7 @@
     }
 }
 
-- (void)setForm_manager:(SFFormTableViewManager *)form_manager {
+- (void)setForm_manager:(SFTableViewManager *)form_manager {
     objc_setAssociatedObject(self, @selector(form_manager), form_manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -120,9 +120,9 @@
     return objc_getAssociatedObject(self, @selector(form_enable))?[objc_getAssociatedObject(self, @selector(form_enable)) boolValue]:NO;
 }
 
-- (SFFormTableViewManager *)form_manager {
+- (SFTableViewManager *)form_manager {
     return objc_getAssociatedObject(self, @selector(form_manager))?:({
-        SFFormTableViewManager *manager = [SFFormTableViewManager managerWithTableView:self];
+        SFTableViewManager *manager = [SFTableViewManager managerWithTableView:self];
         objc_setAssociatedObject(self, @selector(form_manager), manager, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         manager;
     });

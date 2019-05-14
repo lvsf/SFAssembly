@@ -6,9 +6,9 @@
 //  Copyright © 2017年 YunSL. All rights reserved.
 //
 
-#import "SFFormTableItem.h"
+#import "SFTableItem.h"
 
-@implementation SFFormTableItem
+@implementation SFTableItem
 
 - (instancetype)init {
     if (self = [super init]) {

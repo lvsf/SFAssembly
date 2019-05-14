@@ -39,7 +39,7 @@
 }
 
 #pragma mark - set/get
-- (void)setForm_item:(SFFormTableItem *)form_item {
+- (void)setForm_item:(SFTableItem *)form_item {
     objc_setAssociatedObject(self, @selector(form_item), form_item, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -47,7 +47,7 @@
     objc_setAssociatedObject(self, @selector(form_isLoad), @(form_isLoad), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (SFFormTableItem *)form_item {
+- (SFTableItem *)form_item {
     return objc_getAssociatedObject(self, _cmd);
 }
 

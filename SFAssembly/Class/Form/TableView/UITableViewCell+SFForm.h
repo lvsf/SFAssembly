@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SFFormTableItem.h"
+#import "SFTableItem.h"
 
 @protocol SFFormTableViewCellProtocol <NSObject>
 @optional
-- (void)cellDidLoad:(SFFormTableItem *)item;
-- (void)cellWillAppear:(SFFormTableItem *)item;
+- (void)cellDidLoad:(SFTableItem *)item;
+- (void)cellWillAppear:(SFTableItem *)item;
 @end
 
 @interface UITableViewCell (SFForm)
-@property (nonatomic,strong) SFFormTableItem *form_item;
+@property (nonatomic,strong) SFTableItem *form_item;
 @property (nonatomic,assign) BOOL form_isLoad;
 - (void)form_reload;
 @end

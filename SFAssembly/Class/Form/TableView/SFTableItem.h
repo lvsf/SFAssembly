@@ -9,16 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "SFFormItem.h"
 
-@interface SFFormTableItem : SFFormItem
+@interface SFTableItem : SFFormItem
 /**
  是否缓存高度,默认为YES
  */
 @property (nonatomic,assign) BOOL cacheHeight;
 
-/**
- 是否开启强制布局,默认为NO,此时由rowHeight或者cell的自适应来确定高度,为YES时则调用cell的sizeThatFits:来确定cell高度
- */
-@property (nonatomic,assign) BOOL enforceFrameLayout;
 @property (nonatomic,assign) BOOL hiddenSeparator;
 @property (nonatomic,assign) UIEdgeInsets separatorInset;
 @property (nonatomic,assign) CGFloat rowHeight;

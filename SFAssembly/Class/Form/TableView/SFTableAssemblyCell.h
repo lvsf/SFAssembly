@@ -1,5 +1,5 @@
 //
-//  SFFormAssemblyTableViewCell.h
+//  SFTableAssemblyCell.h
 //  SFAssembly
 //
 //  Created by YunSL on 2019/4/1.
@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SFFormAssemblyTableItem.h"
+#import "SFTableAssemblyItem.h"
 #import "UITableViewCell+SFForm.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SFFormAssemblyTableViewCell : UITableViewCell<SFFormTableViewCellProtocol>
+@interface SFTableAssemblyCell : UITableViewCell<SFFormTableViewCellProtocol>
 @end
 
 NS_ASSUME_NONNULL_END

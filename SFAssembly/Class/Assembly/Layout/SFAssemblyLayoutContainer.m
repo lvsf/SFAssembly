@@ -12,12 +12,9 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.widthLayoutMode = SFComponentLayoutModeFill;
-        self.heightLayoutMode = SFComponentLayoutModeFit;
-        self.width = CGRectGetWidth([UIScreen mainScreen].bounds);
+        self.widthLayoutMode = SFPlaceLayoutModeFill;
+        self.heightLayoutMode = SFPlaceLayoutModeFit;
         self.height = CGFLOAT_MAX;
-        self.backgroundColor = [UIColor clearColor];
-        self.containerColor = [UIColor clearColor];
     }
     return self;
 }

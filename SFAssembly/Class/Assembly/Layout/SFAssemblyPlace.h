@@ -27,15 +27,15 @@
     }); \
 }
 
-typedef NS_ENUM(NSInteger,SFComponentPosition) {
-    SFComponentPositionHeader = 0, //置顶
-    SFComponentPositionCenter,     //居中
-    SFComponentPositionFooter      //置底
+typedef NS_ENUM(NSInteger,SFPlacePosition) {
+    SFPlacePositionHeader = 0, //置顶
+    SFPlacePositionCenter,     //居中
+    SFPlacePositionFooter      //置底
 };
 
-typedef NS_ENUM(NSInteger,SFComponentLayoutMode) {
-    SFComponentLayoutModeFit = 0,
-    SFComponentLayoutModeFill,
+typedef NS_ENUM(NSInteger,SFPlaceLayoutMode) {
+    SFPlaceLayoutModeFit = 0,
+    SFPlaceLayoutModeFill,
 };
 
 static NSInteger SFAssemblyPlacePriorityHigh = 1000;
@@ -57,12 +57,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,assign) NSInteger priority;
 
-@property (nonatomic,assign) SFComponentLayoutMode widthLayoutMode;
-@property (nonatomic,assign) SFComponentLayoutMode heightLayoutMode;
-@property (nonatomic,assign) SFComponentPosition horizontalPosition;
-@property (nonatomic,assign) SFComponentPosition verticalPosition;
-
-@property (nonatomic,strong) UIView *customView;
+@property (nonatomic,assign) SFPlaceLayoutMode widthLayoutMode;
+@property (nonatomic,assign) SFPlaceLayoutMode heightLayoutMode;
+@property (nonatomic,assign) SFPlacePosition horizontalPosition;
+@property (nonatomic,assign) SFPlacePosition verticalPosition;
 
 @property (nonatomic,strong) SFViewComponent *view;
 @property (nonatomic,strong) SFImageViewComponent *imageView;
@@ -70,13 +68,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) SFButtonComponent *button;
 @property (nonatomic,strong) SFSwitchComponent *switcher;
 @property (nonatomic,strong) SFTextFieldComponent *textField;
+@property (nonatomic,strong) UIView *customView;
 
+@property (nonatomic,strong,readonly) UIView *renderView;
 @property (nonatomic,strong,readonly) id<SFAssemblyComponentProtocol> component;
-
 @property (nonatomic,assign,readonly) BOOL visible;
 
 @property (nonatomic,copy) void (^onLoad)(SFAssemblyPlace *place, UIView *view);
 
+- (void)update;
 - (CGSize)componentBoundSizeThatFits:(CGSize)size;
 - (CGFloat)componentXWithComponentWidth:(CGFloat)componentWidth
                                contentX:(CGFloat)contentX
@@ -84,8 +84,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGFloat)componentYWithComponentHeight:(CGFloat)componentHeight
                                 contentY:(CGFloat)contentY
                            contentHeight:(CGFloat)contentHeight;
-- (void)update;
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,4 +6,5 @@ inhibit_all_warnings!
 # 布局库
 pod 'Masonry'
 pod 'YYText'
+pod 'MyLayout'
 end

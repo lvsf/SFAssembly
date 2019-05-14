@@ -1,9 +1,9 @@
 //
 //  NSObject+SFEvent.h
-//  HMSSetupApp
+//  SFAssembly
 //
 //  Created by YunSL on 2017/11/9.
-//  Copyright © 2017年 HMS. All rights reserved.
+//  Copyright © 2017年 YunSL. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

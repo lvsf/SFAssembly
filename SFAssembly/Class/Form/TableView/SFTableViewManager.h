@@ -1,5 +1,5 @@
 //
-//  SFFormTableViewManager.h
+//  SFTableViewManager.h
 //  SFAssembly
 //
 //  Created by YunSL on 2019/4/1.
@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SFFormManager.h"
-#import "SFFormTableSection.h"
-#import "SFFormTableItem.h"
+#import "SFTableSection.h"
+#import "SFTableItem.h"
 #import "SFFormConfiguration.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SFFormTableViewManager : SFFormManager<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
+@interface SFTableViewManager : SFFormManager<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 @property (nonatomic,weak) UITableView *tableView;
 @property (nonatomic,copy) NSArray<NSString *> *sectionIndexTitles;
 + (instancetype)managerWithTableView:(UITableView *)tableView;

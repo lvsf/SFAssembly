@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol SFAssemblyComponentProtocol <NSObject>
-@property (nonatomic,weak) UIView *view;
+@property (nonatomic,weak,nullable) UIView *view;
 + (UIView *)componentView;
 - (CGSize)componentViewBoundSizeThatFits:(CGSize)size;
 - (void)componentViewDidLoad:(UIView *)view;

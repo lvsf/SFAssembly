@@ -11,10 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SFAssemblyView : UIView
-@property (nonatomic,strong) UIView *contentView;
+@interface SFAssemblyLayoutManager : NSObject
 @property (nonatomic,strong) SFAssemblyLayout *layout;
-- (void)setLayoutForHeightCalculate:(SFAssemblyLayout *)layout;
+- (CGSize)sizeThatFits:(CGSize)size;
+@end
+
+@interface SFAssemblyView : UIView
+@property (nonatomic,strong) SFAssemblyLayout *layout;
+@property (nonatomic,strong) SFAssemblyLayoutManager *layoutManager;
+- (void)udpate;
 @end
 
 NS_ASSUME_NONNULL_END

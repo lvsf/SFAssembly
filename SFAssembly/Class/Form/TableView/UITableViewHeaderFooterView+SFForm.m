@@ -1,9 +1,9 @@
 //
 //  UITableViewHeaderFooterView+SFForm.m
-//  HMSSetupApp
+//  SFAssembly
 //
 //  Created by YunSL on 2017/11/13.
-//  Copyright © 2017年 HMS. All rights reserved.
+//  Copyright © 2017年 YunSL. All rights reserved.
 //
 
 #import "UITableViewHeaderFooterView+SFForm.h"
@@ -11,15 +11,15 @@
 
 @implementation UITableViewHeaderFooterView (SFForm)
 
-- (void)form_reloadForSection:(SFFormTableSection *)section {
+- (void)form_reloadForSection:(SFTableSection *)section {
     if (self.form_isLoad == NO) {
         self.form_isLoad = YES;
         if ([self respondsToSelector:@selector(headerFooterViewDidLoad:headerFooter:)]) {
-            [(id<SFTableViewHeaderFooterViewProtocol>)self headerFooterViewDidLoad:section headerFooter:self.form_headerFooter];
+            [(id<SFTableAssemblyHeaderFooterViewProtocol>)self headerFooterViewDidLoad:section headerFooter:self.form_headerFooter];
         }
     }
     if ([self respondsToSelector:@selector(headerFooterViewWillAppear:headerFooter:)]) {
-        [(id<SFTableViewHeaderFooterViewProtocol>)self headerFooterViewWillAppear:section headerFooter:self.form_headerFooter];
+        [(id<SFTableAssemblyHeaderFooterViewProtocol>)self headerFooterViewWillAppear:section headerFooter:self.form_headerFooter];
     }
 }
 

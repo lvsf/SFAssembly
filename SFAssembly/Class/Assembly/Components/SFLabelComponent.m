@@ -121,4 +121,52 @@
     });
 }
 
+- (SFLabelComponent * _Nonnull (^)(NSString * _Nullable))sText {
+    return ^SFLabelComponent *(NSString *text){
+        self.text = text;
+        return self;
+    };
+}
+
+- (SFLabelComponent * _Nonnull (^)(NSAttributedString * _Nullable))sAttributedText {
+    return ^SFLabelComponent *(NSAttributedString *attributedText){
+        self.attributedText = attributedText;
+        return self;
+    };
+}
+
+- (SFLabelComponent *(^)(UIColor *))sTextColor {
+    return ^SFLabelComponent *(UIColor *textColor){
+        self.textColor = textColor;
+        return self;
+    };
+}
+
+- (SFLabelComponent *(^)(UIFont *))sFont {
+    return ^SFLabelComponent *(UIFont *font){
+        self.font = font;
+        return self;
+    };
+}
+
+- (SFLabelComponent *(^)(NSUInteger))sNumberOfLines {
+    return ^SFLabelComponent *(NSUInteger numberOfLines){
+        self.numberOfLines = numberOfLines;
+        return self;
+    };
+}
+- (SFLabelComponent *(^)(NSTextAlignment))sTextAlignment {
+    return ^SFLabelComponent *(NSTextAlignment textAlignment){
+        self.textAlignment = textAlignment;
+        return self;
+    };
+}
+
+- (SFLabelComponent *(^)(NSLineBreakMode))sLineBreakMode {
+    return ^SFLabelComponent *(NSLineBreakMode lineBreakMode){
+        self.lineBreakMode = lineBreakMode;
+        return self;
+    };
+}
+
 @end

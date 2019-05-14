@@ -19,6 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) NSUInteger numberOfLines;
 @property (nonatomic,assign) NSTextAlignment textAlignment;
 @property (nonatomic,assign) NSLineBreakMode lineBreakMode;
+- (SFLabelComponent *(^)( NSString *_Nullable))sText;
+- (SFLabelComponent *(^)(NSAttributedString *_Nullable))sAttributedText;
+- (SFLabelComponent *(^)(UIColor *))sTextColor;
+- (SFLabelComponent *(^)(UIFont *))sFont;
+- (SFLabelComponent *(^)(NSUInteger))sNumberOfLines;
+- (SFLabelComponent *(^)(NSTextAlignment))sTextAlignment;
+- (SFLabelComponent *(^)(NSLineBreakMode))sLineBreakMode;
 @end
 
 NS_ASSUME_NONNULL_END

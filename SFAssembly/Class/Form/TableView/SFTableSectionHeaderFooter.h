@@ -1,5 +1,5 @@
 //
-//  SFFormTableSectionHeaderFooter.h
+//  SFTableSectionHeaderFooter.h
 //  QuanYou
 //
 //  Created by YunSL on 2018/1/24.
@@ -8,6 +8,6 @@
 
 #import "SFFormSectionHeaderFooter.h"
 
-@interface SFFormTableSectionHeaderFooter : SFFormSectionHeaderFooter
+@interface SFTableSectionHeaderFooter : SFFormSectionHeaderFooter
 
 @end

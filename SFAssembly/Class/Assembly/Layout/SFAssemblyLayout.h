@@ -38,13 +38,20 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface SFAssemblyLayout : NSObject<SFAssemblyLayoutProtocol>
+@property (nonatomic,copy) NSString *identifier;
 @property (nonatomic,strong) SFAssemblyLayoutContainer *container;
-@property (nonatomic,assign,readonly) CGSize size;
 @property (nonatomic,assign,readonly) BOOL needsLayout;
+@property (nonatomic,assign,readonly) CGSize size;
+
+@property (nonatomic,copy) void (^onReload)(id<SFAssemblyLayoutProtocol> layout);
+
 - (void)addPlace:(SFAssemblyPlace *)place;
 - (void)setNeedsLayout;
 - (void)sizeToFit;
+- (void)sizeToFitBoundSize:(CGSize)size;
 - (CGSize)sizeThatFits:(CGSize)size;
+
 @end
+
 
 NS_ASSUME_NONNULL_END

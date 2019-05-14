@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SFFormTableViewManager.h"
+#import "SFTableViewManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (SFForm)
 @property (nonatomic,assign) BOOL form_enable;
-@property (nonatomic,strong) SFFormTableViewManager *form_manager;
+@property (nonatomic,strong) SFTableViewManager *form_manager;
 
 /**
  注册cell

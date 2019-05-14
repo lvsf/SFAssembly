@@ -12,10 +12,10 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.horizontalPosition = SFComponentPositionHeader;
-        self.verticalPosition = SFComponentPositionCenter;
-        self.widthLayoutMode = SFComponentLayoutModeFit;
-        self.heightLayoutMode = SFComponentLayoutModeFit;
+        self.horizontalPosition = SFPlacePositionHeader;
+        self.verticalPosition = SFPlacePositionCenter;
+        self.widthLayoutMode = SFPlaceLayoutModeFit;
+        self.heightLayoutMode = SFPlaceLayoutModeFit;
     }
     return self;
 }
@@ -29,15 +29,15 @@
 - (CGFloat)componentXWithComponentWidth:(CGFloat)componentWidth contentX:(CGFloat)contentX contentWidth:(CGFloat)contentWidth {
     CGFloat x = 0;
     switch (self.horizontalPosition) {
-        case SFComponentPositionHeader:{
+        case SFPlacePositionHeader:{
             x = contentX;
         }
             break;
-        case SFComponentPositionCenter:{
+        case SFPlacePositionCenter:{
             x = contentX + (contentWidth - componentWidth) * 0.5;
         }
             break;
-        case SFComponentPositionFooter:{
+        case SFPlacePositionFooter:{
             x = contentX + (contentWidth - componentWidth);
         }
             break;
@@ -48,15 +48,15 @@
 - (CGFloat)componentYWithComponentHeight:(CGFloat)componentHeight contentY:(CGFloat)contentY contentHeight:(CGFloat)contentHeight {
     CGFloat y = 0;
     switch (self.verticalPosition) {
-        case SFComponentPositionHeader:{
+        case SFPlacePositionHeader:{
             y = contentY;
         }
             break;
-        case SFComponentPositionCenter:{
+        case SFPlacePositionCenter:{
             y = contentY + (contentHeight - componentHeight) * 0.5;
         }
             break;
-        case SFComponentPositionFooter:{
+        case SFPlacePositionFooter:{
             y = contentY + (contentHeight - componentHeight);
         }
             break;
@@ -77,8 +77,8 @@
         height = height?:CGRectGetHeight(_customView.bounds);
     }
     //是否需要自适应布局
-    BOOL widthLayoutFit = self.widthLayoutMode == SFComponentLayoutModeFit || width == CGFLOAT_MAX;
-    BOOL heightLayoutFit = self.heightLayoutMode == SFComponentLayoutModeFit || height == CGFLOAT_MAX;
+    BOOL widthLayoutFit = self.widthLayoutMode == SFPlaceLayoutModeFit || width == CGFLOAT_MAX;
+    BOOL heightLayoutFit = self.heightLayoutMode == SFPlaceLayoutModeFit || height == CGFLOAT_MAX;
     if (widthLayoutFit || heightLayoutFit) {
         CGSize componentBoundSize = CGSizeZero;
         if (_customView) {
@@ -98,7 +98,11 @@
 }
 
 - (BOOL)visible {
-    return _component || _customView || (_width > 0 && _height > 0);
+    return (_component && [_component componentViewShouldDisplay]) || (_width > 0 && _height > 0) || _customView;
+}
+
+- (UIView *)renderView {
+    return _customView?:_component.view;
 }
 
 SFAssemblyPlaceComponentGetter(SFViewComponent,view)
