@@ -10,8 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SFAssemblyLayout;
 @interface SFAssemblyViewComponent : SFViewComponent
-
+@property (nonatomic,strong) SFAssemblyLayout *layout;
 @end
 
 NS_ASSUME_NONNULL_END

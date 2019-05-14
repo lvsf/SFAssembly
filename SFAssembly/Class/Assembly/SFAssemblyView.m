@@ -62,6 +62,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
                 //新建控件
                 if (view == nil) {
                     view = [component.class componentView];
+                    NSLog(@"[%@ new]",NSStringFromClass(component.class));
                     if ([component respondsToSelector:@selector(componentViewDidLoad:)]) {
                         [component componentViewDidLoad:view];
                     }

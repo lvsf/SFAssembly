@@ -1,5 +1,5 @@
 //
-//  SFFormSectionHeaderFooterLayout.h
+//  SFAssemblyEasyLayout.h
 //  SFAssembly
 //
 //  Created by YunSL on 2019/4/3.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SFFormSectionHeaderFooterLayout : SFAssemblyLayout
+@interface SFAssemblyEasyLayout : SFAssemblyLayout
 @property (nonatomic,strong,readonly) SFAssemblyPlace *topSeparator;
 @property (nonatomic,strong,readonly) SFAssemblyPlace *title;
 @property (nonatomic,strong,readonly) SFAssemblyPlace *detail;

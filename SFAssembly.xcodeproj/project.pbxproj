@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1725745121F5C22900765281 /* SFMessageAssemblyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1725745021F5C22900765281 /* SFMessageAssemblyLayout.m */; };
-		174123DD2254829D00EF136E /* SFFormSectionHeaderFooterLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 174123DC2254829D00EF136E /* SFFormSectionHeaderFooterLayout.m */; };
+		174123DD2254829D00EF136E /* SFAssemblyEasyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 174123DC2254829D00EF136E /* SFAssemblyEasyLayout.m */; };
 		174123E02254C7A700EF136E /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 174123DF2254C7A700EF136E /* RootViewController.m */; };
 		1746A0E422526B69004B6431 /* SFTableAssemblyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1746A0E322526B69004B6431 /* SFTableAssemblyCell.m */; };
 		1748C57A2252F27200982A99 /* SFTableAssemblyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1748C5792252F27200982A99 /* SFTableAssemblyItem.m */; };
 		174B87872259422000540935 /* SFScrollViewComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 174B87862259422000540935 /* SFScrollViewComponent.m */; };
 		174B878A2259423400540935 /* SFTableViewComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 174B87892259423400540935 /* SFTableViewComponent.m */; };
-		174B878D2259F07400540935 /* SFAssemblyFormLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 174B878C2259F07400540935 /* SFAssemblyFormLayout.m */; };
+		174B878D2259F07400540935 /* SFAssemblyEasyFormLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 174B878C2259F07400540935 /* SFAssemblyEasyFormLayout.m */; };
 		174D355722571F4D0081F0BB /* SFSwitchComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 174D355622571F4D0081F0BB /* SFSwitchComponent.m */; };
 		174EFA402255F938009D385D /* NSObject+SFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 174EFA3F2255F937009D385D /* NSObject+SFEvent.m */; };
 		1755955B2289673F00AC6638 /* SFTableAssemblySectionHeaderFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1755955A2289673F00AC6638 /* SFTableAssemblySectionHeaderFooter.m */; };
@@ -76,8 +76,8 @@
 /* Begin PBXFileReference section */
 		1725744F21F5C22900765281 /* SFMessageAssemblyLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFMessageAssemblyLayout.h; sourceTree = "<group>"; };
 		1725745021F5C22900765281 /* SFMessageAssemblyLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFMessageAssemblyLayout.m; sourceTree = "<group>"; };
-		174123DB2254829D00EF136E /* SFFormSectionHeaderFooterLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFFormSectionHeaderFooterLayout.h; sourceTree = "<group>"; };
-		174123DC2254829D00EF136E /* SFFormSectionHeaderFooterLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFFormSectionHeaderFooterLayout.m; sourceTree = "<group>"; };
+		174123DB2254829D00EF136E /* SFAssemblyEasyLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAssemblyEasyLayout.h; sourceTree = "<group>"; };
+		174123DC2254829D00EF136E /* SFAssemblyEasyLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyEasyLayout.m; sourceTree = "<group>"; };
 		174123DE2254C7A700EF136E /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		174123DF2254C7A700EF136E /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		1746A0E222526B69004B6431 /* SFTableAssemblyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTableAssemblyCell.h; sourceTree = "<group>"; };
@@ -88,8 +88,8 @@
 		174B87862259422000540935 /* SFScrollViewComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFScrollViewComponent.m; sourceTree = "<group>"; };
 		174B87882259423400540935 /* SFTableViewComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFTableViewComponent.h; sourceTree = "<group>"; };
 		174B87892259423400540935 /* SFTableViewComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFTableViewComponent.m; sourceTree = "<group>"; };
-		174B878B2259F07400540935 /* SFAssemblyFormLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAssemblyFormLayout.h; sourceTree = "<group>"; };
-		174B878C2259F07400540935 /* SFAssemblyFormLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyFormLayout.m; sourceTree = "<group>"; };
+		174B878B2259F07400540935 /* SFAssemblyEasyFormLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFAssemblyEasyFormLayout.h; sourceTree = "<group>"; };
+		174B878C2259F07400540935 /* SFAssemblyEasyFormLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFAssemblyEasyFormLayout.m; sourceTree = "<group>"; };
 		174D355522571F4D0081F0BB /* SFSwitchComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFSwitchComponent.h; sourceTree = "<group>"; };
 		174D355622571F4D0081F0BB /* SFSwitchComponent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SFSwitchComponent.m; sourceTree = "<group>"; };
 		174EFA3E2255F937009D385D /* NSObject+SFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SFEvent.h"; sourceTree = "<group>"; };
@@ -205,6 +205,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1753F281228AB0EC00D24C83 /* Easy */ = {
+			isa = PBXGroup;
+			children = (
+				174123DB2254829D00EF136E /* SFAssemblyEasyLayout.h */,
+				174123DC2254829D00EF136E /* SFAssemblyEasyLayout.m */,
+				174B878B2259F07400540935 /* SFAssemblyEasyFormLayout.h */,
+				174B878C2259F07400540935 /* SFAssemblyEasyFormLayout.m */,
+			);
+			path = Easy;
+			sourceTree = "<group>";
+		};
 		1757A8F421F86C25007A46FF /* Message */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,8 +271,7 @@
 		176476B42251F3240023EC03 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				174B878B2259F07400540935 /* SFAssemblyFormLayout.h */,
-				174B878C2259F07400540935 /* SFAssemblyFormLayout.m */,
+				1753F281228AB0EC00D24C83 /* Easy */,
 				176476BA2251F3240023EC03 /* SFAssemblyLayout.h */,
 				176476B72251F3240023EC03 /* SFAssemblyLayout.m */,
 				176476B52251F3240023EC03 /* SFAssemblyPlace.h */,
@@ -295,8 +305,6 @@
 				176476F4225208A80023EC03 /* SFFormConfiguration.m */,
 				176476EA225201E40023EC03 /* SFFormSectionHeaderFooter.h */,
 				176476EB225201E40023EC03 /* SFFormSectionHeaderFooter.m */,
-				174123DB2254829D00EF136E /* SFFormSectionHeaderFooterLayout.h */,
-				174123DC2254829D00EF136E /* SFFormSectionHeaderFooterLayout.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -596,7 +604,7 @@
 				176476F5225208A80023EC03 /* SFFormConfiguration.m in Sources */,
 				17705E4222530BD6000C5E1E /* NSString+HHAdd.m in Sources */,
 				176476FF225213C30023EC03 /* UITableViewCell+SFForm.m in Sources */,
-				174123DD2254829D00EF136E /* SFFormSectionHeaderFooterLayout.m in Sources */,
+				174123DD2254829D00EF136E /* SFAssemblyEasyLayout.m in Sources */,
 				176476D72251F6470023EC03 /* UICollectionView+SFForm.m in Sources */,
 				176476E02251F95B0023EC03 /* SFMultipleProxy.m in Sources */,
 				176476E6225201780023EC03 /* SFFormSection.m in Sources */,
@@ -606,7 +614,7 @@
 				176476CC2251F3240023EC03 /* SFViewComponent.m in Sources */,
 				176476C92251F3240023EC03 /* SFAssemblyLayout.m in Sources */,
 				1725745121F5C22900765281 /* SFMessageAssemblyLayout.m in Sources */,
-				174B878D2259F07400540935 /* SFAssemblyFormLayout.m in Sources */,
+				174B878D2259F07400540935 /* SFAssemblyEasyFormLayout.m in Sources */,
 				17B325D121F563660009FE48 /* main.m in Sources */,
 				176476CE2251F3240023EC03 /* SFImageViewComponent.m in Sources */,
 				176476D42251F6350023EC03 /* UITableView+SFForm.m in Sources */,

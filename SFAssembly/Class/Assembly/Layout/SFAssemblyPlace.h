@@ -13,6 +13,7 @@
 #import "SFButtonComponent.h"
 #import "SFSwitchComponent.h"
 #import "SFTextFieldComponent.h"
+#import "SFAssemblyViewComponent.h"
 #import "NSObject+SFEvent.h"
 
 #define SFAssemblyPlaceComponentGetter(class,property) \
@@ -69,6 +70,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) SFButtonComponent *button;
 @property (nonatomic,strong) SFSwitchComponent *switcher;
 @property (nonatomic,strong) SFTextFieldComponent *textField;
+@property (nonatomic,strong) SFAssemblyViewComponent *assembly;
 @property (nonatomic,strong) UIView *customView;
 
 @property (nonatomic,strong,readonly) UIView *renderView;

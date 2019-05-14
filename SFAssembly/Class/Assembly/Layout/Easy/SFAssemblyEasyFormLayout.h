@@ -1,5 +1,5 @@
 //
-//  SFAssemblyFormLayout.h
+//  SFAssemblyEasyFormLayout.h
 //  SFAssembly
 //
 //  Created by YunSL on 2019/4/7.
@@ -10,7 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SFAssemblyFormLayout : SFAssemblyLayout
+@interface SFAssemblyEasyFormLayout : SFAssemblyLayout
+@property (nonatomic,assign) CGFloat minHeight;
 @property (nonatomic,strong) SFAssemblyPlace *title;
 @property (nonatomic,strong) SFAssemblyPlace *subTitle;
 @property (nonatomic,strong) SFAssemblyPlace *content;

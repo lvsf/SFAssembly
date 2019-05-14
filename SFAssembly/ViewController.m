@@ -15,6 +15,9 @@
 #import "YYFPSLabel.h"
 #import <Masonry.h>
 
+#import "SFTableAssemblyItem.h"
+#import "SFAssemblyEasyFormLayout.h"
+
 @interface ViewController ()<UITableViewDelegate,UIScrollViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) YYFPSLabel *fpsLabel;
 @property (nonatomic,strong) UITableView *t;
@@ -55,6 +58,38 @@
     [t.form_manager addActionForTableViewDidSelectedWithBlock:^(UITableView *tableView, UITableViewCell *cell, NSIndexPath *indexPath) {
         NSLog(@"didSelect:%@",indexPath);
     }];
+    
+    SFTableSection *section = [SFTableSection new];
+    SFTableAssemblyItem *item = [SFTableAssemblyItem new];
+    item.layout = ({
+        SFAssemblyEasyFormLayout *layout = [SFAssemblyEasyFormLayout new];
+        layout.title.label.text = @"Assembly";
+        layout.title.label.textColor = [UIColor whiteColor];
+        layout.title.label.font = [UIFont boldSystemFontOfSize:16];
+        layout.detail.switcher.on = YES;
+        [layout.detail.switcher addActionForControlEvents:UIControlEventValueChanged actionBlock:^(id actionObject, UISwitch *sender, id userInfo) {
+            NSLog(@"SFAssemblyEasyFormLayout switch : %@",@(sender.on));
+        }];
+        layout.background.imageView.image = [UIImage imageNamed:@"timg"];
+        layout.background.imageView.contentMode = UIViewContentModeScaleAspectFill;
+        
+        //layout.content.label.sText(@"[content:3.141592653]").sTextColor([UIColor whiteColor]).sFont([UIFont systemFontOfSize:12]).sNumberOfLines(0);
+        
+        layout.content.assembly.layout = ({
+            SFMessageAssemblyLayout *m = [self layout];
+            m.content.yyLabel.text = [NSString stringWithFormat:@"<%@>",[NSString hh_randomTextWithKind:HHTextRandomKindChineseCharacter length:arc4random_uniform(200)]];
+            m;
+        });
+        
+        layout;
+    });
+    section.assemblyHeader.easyLayout.height = 44;
+    section.assemblyFooter.easyLayout.height = 44;
+    section.assemblyHeader.easyLayout.background.view.backgroundColor = [UIColor yellowColor];
+    section.assemblyFooter.easyLayout.background.view.backgroundColor = [UIColor yellowColor];
+    [section addItem:item];
+    
+    [t.form_manager addSection:section];
     
     for (NSInteger i = 0; i < 30; i++) {
         SFTableAssemblyItem *item = [SFTableAssemblyItem new];

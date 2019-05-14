@@ -26,9 +26,9 @@
     return _layout?:_easyLayout;
 }
 
-- (SFFormSectionHeaderFooterLayout *)easyLayout {
+- (SFAssemblyEasyLayout *)easyLayout {
     return _easyLayout?:({
-        _easyLayout = [SFFormSectionHeaderFooterLayout new];
+        _easyLayout = [SFAssemblyEasyLayout new];
         _easyLayout;
     });
 }

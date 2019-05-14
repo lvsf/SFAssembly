@@ -1,23 +1,23 @@
 //
-//  SFFormSectionHeaderFooterLayout.m
+//  SFAssemblyEasyLayout.m
 //  SFAssembly
 //
 //  Created by YunSL on 2019/4/3.
 //  Copyright © 2019年 YunSL. All rights reserved.
 //
 
-#import "SFFormSectionHeaderFooterLayout.h"
+#import "SFAssemblyEasyLayout.h"
 
-@implementation SFFormSectionHeaderFooterLayout
+@implementation SFAssemblyEasyLayout
 @synthesize topSeparator = _topSeparator;
 @synthesize title = _title;
 @synthesize detail = _detail;
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    SFFormSectionHeaderFooterLayout *layout = self;
+    SFAssemblyEasyLayout *layout = self;
     CGSize boundSize = size;
-    if ([layout isMemberOfClass:[SFFormSectionHeaderFooterLayout class]]) {
-        SFFormSectionHeaderFooterLayout *easyLayout = (SFFormSectionHeaderFooterLayout *)layout;
+    if ([layout isMemberOfClass:[SFAssemblyEasyLayout class]]) {
+        SFAssemblyEasyLayout *easyLayout = (SFAssemblyEasyLayout *)layout;
         CGRect topSeparatorFrame = CGRectZero;
         if (easyLayout.topSeparator.visible) {
             topSeparatorFrame.size = [easyLayout.topSeparator componentBoundSizeThatFits:CGSizeMake(boundSize.width,easyLayout.topSeparator.height)];

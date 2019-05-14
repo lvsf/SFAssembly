@@ -145,4 +145,6 @@ SFAssemblyPlaceComponentGetter(SFImageViewComponent,imageView)
 
 SFAssemblyPlaceComponentGetter(SFTextFieldComponent, textField)
 
+SFAssemblyPlaceComponentGetter(SFAssemblyViewComponent, assembly)
+
 @end
