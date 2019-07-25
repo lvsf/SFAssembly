@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *key;
 @property (nonatomic,copy) NSString *reuseIdentifier;
 @property (nonatomic,copy) NSString *className;
-@property (nonatomic,copy) NSString *(^validator)(SFFormItem *item);
+@property (nonatomic,copy)  NSString *_Nullable(^validator)(SFFormItem *item);
 @property (nonatomic,assign) BOOL verify;
 @property (nonatomic,strong) id object;
 @property (nonatomic,strong) NSIndexPath *indexPath;

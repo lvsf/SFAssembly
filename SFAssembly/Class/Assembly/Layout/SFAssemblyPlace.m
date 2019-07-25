@@ -65,33 +65,57 @@
 }
 
 - (CGSize)componentBoundSizeThatFits:(CGSize)size {
-    //优先使用指定的值,没有指定值再使用布局时传入的值
-    CGFloat width = self.width?:size.width;
-    CGFloat height = self.height?:size.height;
-    //布局空间大小为0
-    if (width <= 0 || height <= 0) {
-        if (CGRectGetWidth(_customView.bounds) <= 0 || CGRectGetHeight(_customView.bounds) <= 0) {
-            return CGSizeZero;
+    //指定宽高
+    CGFloat width = 0;
+    CGFloat height = 0;
+    //布局宽高
+    CGFloat layoutWidth = self.width;
+    CGFloat layoutHeight = self.height;
+    if (layoutWidth <= 0) {
+        layoutWidth = self.maxWidth?:size.width;
+        if (layoutWidth <= 0 && _customView) {
+            layoutWidth = CGRectGetWidth(_customView.bounds);
         }
-        width = width?:CGRectGetWidth(_customView.bounds);
-        height = height?:CGRectGetHeight(_customView.bounds);
     }
-    //是否需要自适应布局
-    BOOL widthLayoutFit = self.widthLayoutMode == SFPlaceLayoutModeFit || width == CGFLOAT_MAX;
-    BOOL heightLayoutFit = self.heightLayoutMode == SFPlaceLayoutModeFit || height == CGFLOAT_MAX;
-    if (widthLayoutFit || heightLayoutFit) {
-        CGSize componentBoundSize = CGSizeZero;
-        if (_customView) {
-            componentBoundSize = [_customView sizeThatFits:CGSizeMake(width, height)];
+    if (layoutHeight <= 0) {
+        layoutHeight = self.maxHeight?:size.height;
+        if (layoutHeight <= 0 && _customView) {
+            layoutHeight = CGRectGetHeight(_customView.bounds);
         }
-        else {
-            componentBoundSize = [self.component componentViewBoundSizeThatFits:CGSizeMake(width, height)];
+    }
+    if (layoutWidth > 0 && layoutHeight > 0) {
+        width = layoutWidth;
+        height = layoutHeight;
+        //布局类型
+        SFPlaceLayoutMode widthMode = self.widthLayoutMode;
+        if (self.width > 0) {
+            widthMode = SFPlaceLayoutModeFill;
         }
-        if (widthLayoutFit) {
-            width = componentBoundSize.width;
+        else if (layoutWidth == CGFLOAT_MAX) {
+            widthMode = SFPlaceLayoutModeFit;
         }
-        if (heightLayoutFit) {
-            height = componentBoundSize.height;
+        SFPlaceLayoutMode heigtMode = self.heightLayoutMode;
+        if (self.height > 0) {
+            heigtMode = SFPlaceLayoutModeFill;
+        }
+        else if (layoutHeight == CGFLOAT_MAX) {
+            heigtMode = SFPlaceLayoutModeFit;
+        }
+        //宽高自适应布局
+        if (widthMode == SFPlaceLayoutModeFit || heigtMode == SFPlaceLayoutModeFit) {
+            CGSize componentBoundSize = CGSizeZero;
+            if (_customView) {
+                componentBoundSize = [_customView sizeThatFits:CGSizeMake(layoutWidth, layoutHeight)];
+            }
+            else {
+                componentBoundSize = [self.component componentViewBoundSizeThatFits:CGSizeMake(width, height)];
+            }
+            if (widthMode == SFPlaceLayoutModeFit) {
+                width = componentBoundSize.width;
+            }
+            if (heigtMode == SFPlaceLayoutModeFit) {
+                height = componentBoundSize.height;
+            }
         }
     }
     return CGSizeMake(width, height);
@@ -126,7 +150,7 @@
 }
 
 - (BOOL)visible {
-    return (_component && [_component componentViewShouldDisplay]) || (_width > 0 && _height > 0) || _customView;
+    return (_component && [_component componentViewShouldDisplay]) || (_maxWidth > 0 && _maxHeight > 0) || _customView;
 }
 
 - (UIView *)renderView {

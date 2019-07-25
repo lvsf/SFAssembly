@@ -7,6 +7,7 @@
 //
 
 #import "SFImageViewComponent.h"
+#import "SDWebImage.h"
 
 @implementation SFImageViewComponent
 
@@ -52,6 +53,7 @@
         NSURL *URL = [NSURL URLWithString:self.imageURL];
         if (URL) {
             //下载图片
+            [view sd_setImageWithURL:URL placeholderImage:self.image];
         }
     }
 }

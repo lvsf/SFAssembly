@@ -36,7 +36,7 @@
 
 - (void)headerFooterViewDidLoad:(SFTableSection *)section headerFooter:(SFTableAssemblySectionHeaderFooter *)headerFooter {
     if (!self.fd_isTemplateLayoutHeaderFooterView) {
-        [self.backgroundView setBackgroundColor:[UIColor whiteColor]];
+        [self setBackgroundView:[UIView new]];
         [self.contentView addSubview:self.assemblyView];
     }
 }

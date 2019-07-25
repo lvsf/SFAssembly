@@ -51,6 +51,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    if ([self.assemblyItem rowHeight] > 0) {
+        [self.assemblyView.layout sizeToFitBoundSize:self.contentView.bounds.size];
+    }
     [self.assemblyView setFrame:self.contentView.bounds];
 }
 

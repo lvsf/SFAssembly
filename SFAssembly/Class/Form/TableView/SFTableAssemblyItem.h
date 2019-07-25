@@ -8,11 +8,13 @@
 
 #import "SFTableItem.h"
 #import "SFAssemblyLayout.h"
+#import "SFAssemblyEasyFormLayout.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SFTableAssemblyItem : SFTableItem
 @property (nonatomic,strong) SFAssemblyLayout *layout;
+@property (nonatomic,strong) SFAssemblyEasyFormLayout *formLayout;
 @end
 
 NS_ASSUME_NONNULL_END

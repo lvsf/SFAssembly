@@ -20,7 +20,7 @@
         SFAssemblyEasyLayout *easyLayout = (SFAssemblyEasyLayout *)layout;
         CGRect topSeparatorFrame = CGRectZero;
         if (easyLayout.topSeparator.visible) {
-            topSeparatorFrame.size = [easyLayout.topSeparator componentBoundSizeThatFits:CGSizeMake(boundSize.width,easyLayout.topSeparator.height)];
+            topSeparatorFrame.size = [easyLayout.topSeparator componentBoundSizeThatFits:CGSizeMake(boundSize.width,easyLayout.topSeparator.maxHeight)];
         }
         CGFloat layoutHeight = size.height - CGRectGetHeight(topSeparatorFrame);
         CGFloat layoutWidth = size.width;

@@ -20,4 +20,13 @@
     return self;
 }
 
+- (void)reloadData {
+    if (self.tableView && self.cell) {
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:self.cell];
+        if (indexPath) {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+    }
+}
+
 @end

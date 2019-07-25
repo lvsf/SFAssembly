@@ -76,8 +76,9 @@
     if (actionBlock) {
         [self addActionForSelectorEvent:@selector(tableView:didSelectRowAtIndexPath:) actionBlock:^(id actionObject, id sender, id userInfo) {
             UITableView *tableView = sender;
-            NSIndexPath *indexPath = userInfo;
-            actionBlock(tableView,[tableView cellForRowAtIndexPath:indexPath],indexPath);
+            UITableViewCell *cell = [userInfo objectForKey:@"UITableViewCell"];
+            NSIndexPath *indexPath = [userInfo objectForKey:@"NSIndexPath"];
+            actionBlock(tableView,cell,indexPath);
         }];
     }
 }
@@ -86,8 +87,9 @@
     if (actionBlock) {
         [self addActionForSelectorEvent:@selector(collectionView:didSelectItemAtIndexPath:) actionBlock:^(id actionObject, id sender, id userInfo) {
             UICollectionView *collectionView = sender;
-            NSIndexPath *indexPath = userInfo;
-            actionBlock(collectionView,[collectionView cellForItemAtIndexPath:indexPath],indexPath);
+            UICollectionViewCell *cell = [userInfo objectForKey:@"UICollectionViewCell"];
+            NSIndexPath *indexPath = [userInfo objectForKey:@"NSIndexPath"];
+            actionBlock(collectionView,cell,indexPath);
         }];
     }
 }
@@ -111,14 +113,6 @@
     [self.customEventActions[key] enumerateObjectsUsingBlock:^(SFEventActionBlock obj, NSUInteger idx, BOOL * _Nonnull stop) {
         obj(self,sender,userInfo);
     }];
-}
-
-- (void)sendActionsForTableViewDidSelected:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    [self sendActionsForSelectorEvent:@selector(tableView:didSelectRowAtIndexPath:) sender:tableView userInfo:indexPath];
-}
-
-- (void)sendActionsForCollectionViewDidSelected:(UICollectionView *)collectionView indexPath:(NSIndexPath *)indexPath {
-    [self sendActionsForSelectorEvent:@selector(collectionView:didSelectItemAtIndexPath:) sender:collectionView userInfo:indexPath];
 }
 
 - (NSArray<NSString *> *)action_controlEvents {

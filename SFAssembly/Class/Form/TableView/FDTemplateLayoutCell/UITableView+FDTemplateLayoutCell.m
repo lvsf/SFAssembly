@@ -159,6 +159,7 @@
         NSAssert(templateCell != nil, @"Cell must be registered to table view for identifier - %@", identifier);
         templateCell.fd_isTemplateLayoutCell = YES;
         templateCell.contentView.autoresizingMask = UIViewAutoresizingNone;
+        //templateCell.contentView.translatesAutoresizingMaskIntoConstraints = NO;
         templateCellsByIdentifiers[identifier] = templateCell;
         [self fd_debugLog:[NSString stringWithFormat:@"layout cell created - %@", identifier]];
     }

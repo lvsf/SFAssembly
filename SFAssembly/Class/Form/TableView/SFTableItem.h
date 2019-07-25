@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "SFFormItem.h"
 
+@protocol SFTableItemDelegate <NSObject>
+@end
+
 @interface SFTableItem : SFFormItem
 /**
  是否缓存高度,默认为YES
@@ -24,6 +27,11 @@
 @property (nonatomic) UITableViewCellAccessoryType accessoryType;
 @property (nonatomic,assign,readonly) CGFloat height;
 
+@property (nonatomic,weak) id<SFTableItemDelegate> delegate;
+
+@property (nonatomic,weak) UITableView *tableView;
 @property (nonatomic,weak) UITableViewCell *cell;
+
+- (void)reloadData;
 
 @end

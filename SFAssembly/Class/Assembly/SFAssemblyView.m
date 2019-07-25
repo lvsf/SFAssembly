@@ -34,7 +34,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
 }
 
 - (void)_updateLayoutForRender:(BOOL)render {
-    NSLog(@"[SFAssembly] SFAssemblyLayoutManager _updateLayout");
+    //NSLog(@"[SFAssembly] SFAssemblyLayoutManager _updateLayout");
     NSMutableArray<SFAssemblyPlace *> *places = [NSMutableArray arrayWithArray:self.layout.places];
     if (render) {
         if (self.layout.background.visible) {
@@ -62,7 +62,7 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
                 //新建控件
                 if (view == nil) {
                     view = [component.class componentView];
-                    NSLog(@"[%@ new]",NSStringFromClass(component.class));
+                    //NSLog(@"[%@ new]",NSStringFromClass(component.class));
                     if ([component respondsToSelector:@selector(componentViewDidLoad:)]) {
                         [component componentViewDidLoad:view];
                     }

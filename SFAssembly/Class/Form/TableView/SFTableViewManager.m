@@ -101,6 +101,7 @@
         return 0;
     }
     SFTableItem *item = (SFTableItem *)[tableView.form_manager itemAtIndexPath:indexPath];
+    item.tableView = tableView;
     NSString *reuseIdentifier = item.reuseIdentifier?:[SFTableViewManager configuration].reuseIdentifierForClassName(item.className);
     [tableView form_registerCellWithClassName:item.className reuseIdentifier:reuseIdentifier];
     CGFloat height = item.rowHeight;
@@ -137,12 +138,12 @@
     [item setCell:cell];
     [cell setForm_item:item];
     [cell form_reload];    
-    [self _triggerActionForSelector:_cmd withTableView:tableView indexPath:indexPath];
+    [self _triggerActionForSelector:_cmd withTableViewCell:cell indexPath:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    [self _triggerActionForSelector:_cmd withTableView:tableView indexPath:indexPath];
+    [self _triggerActionForSelector:_cmd withTableViewCell:[tableView cellForRowAtIndexPath:indexPath] indexPath:indexPath];
 }
 
 - (NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -150,10 +151,17 @@
 }
 
 #pragma mark - pravite
-- (void)_triggerActionForSelector:(SEL)selector withTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
-    SFTableItem *item = (SFTableItem *)[tableView.form_manager itemAtIndexPath:indexPath];
-    [item sendActionsForSelectorEvent:selector sender:tableView userInfo:indexPath];
-    [self sendActionsForSelectorEvent:selector sender:tableView userInfo:indexPath];
+- (void)_triggerActionForSelector:(SEL)selector withTableViewCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)indexPath {
+    NSMutableDictionary *userInfo = [NSMutableDictionary new];
+    if (cell) {
+        userInfo[@"UITableViewCell"] = cell;
+    }
+    if (indexPath) {
+        userInfo[@"NSIndexPath"] = indexPath;
+    }
+    SFTableItem *item = (SFTableItem *)[self.tableView.form_manager itemAtIndexPath:indexPath];
+    [item sendActionsForSelectorEvent:selector sender:self.tableView userInfo:userInfo];
+    [self sendActionsForSelectorEvent:selector sender:self.tableView userInfo:userInfo];
 }
 
 - (UITableViewHeaderFooterView *)_viewForTableSection:(SFTableSection *)section headerFooter:(SFFormSectionHeaderFooter *)sectionHeaderFooter {

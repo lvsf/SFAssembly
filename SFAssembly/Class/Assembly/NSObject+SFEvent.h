@@ -28,6 +28,4 @@ typedef void(^SFEventActionBlock)(id actionObject, id sender, id userInfo);
 - (void)sendActionsForControlEvents:(UIControlEvents)controlEvents sender:(id)sender userInfo:(id)userInfo;
 - (void)sendActionsForSelectorEvent:(SEL)selector sender:(id)sender userInfo:(id)userInfo;
 - (void)sendActionsForCustomEvent:(NSString *)eventKey sender:(id)sender userInfo:(id)userInfo;
-- (void)sendActionsForTableViewDidSelected:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;
-- (void)sendActionsForCollectionViewDidSelected:(UICollectionView *)collectionView indexPath:(NSIndexPath *)indexPath;
 @end
