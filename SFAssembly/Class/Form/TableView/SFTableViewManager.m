@@ -38,6 +38,13 @@
     return [SFTableItem class];
 }
 
+- (instancetype)init {
+    if (self = [super init]) {
+        _automaticDeselectRow = YES;
+    }
+    return self;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return tableView.form_manager.sections.count;
 }
@@ -142,7 +149,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if (_automaticDeselectRow) {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
     [self _triggerActionForSelector:_cmd withTableViewCell:[tableView cellForRowAtIndexPath:indexPath] indexPath:indexPath];
 }
 

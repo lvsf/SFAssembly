@@ -7,7 +7,7 @@
 //
 
 #import "SFImageViewComponent.h"
-#import "SDWebImage.h"
+#import <SDWebImage.h>
 
 @implementation SFImageViewComponent
 

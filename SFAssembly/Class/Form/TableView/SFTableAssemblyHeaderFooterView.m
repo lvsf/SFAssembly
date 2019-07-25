@@ -45,6 +45,7 @@
     if (!self.fd_isTemplateLayoutHeaderFooterView) {
         [self.assemblyView setLayout:headerFooter.layout];
         [self.assemblyView udpate];
+        [self.assemblyView setBackgroundColor:headerFooter.backgroundColor];
     }
 }
 

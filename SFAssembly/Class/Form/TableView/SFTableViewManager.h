@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SFTableViewManager : SFFormManager<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 @property (nonatomic,weak) UITableView *tableView;
 @property (nonatomic,copy) NSArray<NSString *> *sectionIndexTitles;
+@property (nonatomic,assign) BOOL automaticDeselectRow;
 + (instancetype)managerWithTableView:(UITableView *)tableView;
 + (SFFormConfiguration *)configuration;
 @end

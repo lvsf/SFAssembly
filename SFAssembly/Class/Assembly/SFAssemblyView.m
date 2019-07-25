@@ -170,8 +170,10 @@ static inline NSString *SFReusableKeyForComponent(id<SFAssemblyComponentProtocol
         }
     }];
     [self setNeedsLayout];
-    [self addSubview:self.layout.background.renderView];
-    [self sendSubviewToBack:self.layout.background.renderView];
+    if (self.layout.background.renderView) {
+        [self addSubview:self.layout.background.renderView];
+        [self sendSubviewToBack:self.layout.background.renderView];
+    }
 }
 
 - (void)layoutSubviews {

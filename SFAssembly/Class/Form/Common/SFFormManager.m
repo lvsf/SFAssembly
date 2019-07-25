@@ -38,7 +38,12 @@
 }
 
 - (void)insertSection:(SFFormSection *)section atIndex:(NSInteger)sectionIndex {
-    [self.formSections insertObject:section atIndex:sectionIndex];
+    if (sectionIndex < self.formSections.count) {
+        [self.formSections insertObject:section atIndex:sectionIndex];
+    }
+    else {
+        [self.formSections addObject:section];
+    }
 }
 
 - (void)replaceSections:(NSArray<SFFormSection *> *)sections {

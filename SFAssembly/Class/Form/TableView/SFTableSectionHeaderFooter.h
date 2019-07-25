@@ -9,5 +9,5 @@
 #import "SFFormSectionHeaderFooter.h"
 
 @interface SFTableSectionHeaderFooter : SFFormSectionHeaderFooter
-
+@property (nonatomic,strong) UIColor *backgroundColor;
 @end
