@@ -16,9 +16,9 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
-SFForm.xcodeproj/xcuserdata/
-SFForm.xcodeproj/project.xcworkspace/xcuserdata/
-SFForm.xcworkspace/
+SFAssembly.xcodeproj/xcuserdata/
+SFAssembly.xcodeproj/project.xcworkspace/xcuserdata/
+SFAssembly.xcworkspace/
 .DS_Store
 
 ## Other
@@ -39,7 +39,6 @@ SFForm.xcworkspace/
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
 Pods/
-Podfile.lock
 
 # Carthage
 #

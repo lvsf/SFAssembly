@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UICollectionView (SFForm)
+
+/**
+ 注册cell
+ 
+ @param className       cell类名
+ @param reuseIdentifier cell重用标志
+ */
+- (void)form_registerCellWithClassName:(NSString *)className
+                       reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end
 

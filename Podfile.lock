@@ -1,0 +1,24 @@
+PODS:
+  - Masonry (1.1.0)
+  - MyLayout (1.6.1)
+  - YYText (1.0.7)
+
+DEPENDENCIES:
+  - Masonry
+  - MyLayout
+  - YYText
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Masonry
+    - MyLayout
+    - YYText
+
+SPEC CHECKSUMS:
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MyLayout: 833c4b24a69a1e3fd33abe827eeb2fdf19193408
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
+
+PODFILE CHECKSUM: 48ba3e0c589435786153d06be1eaaf25d19694b7
+
+COCOAPODS: 1.5.3
